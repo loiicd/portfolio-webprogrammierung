@@ -85,17 +85,17 @@ function displaySearchmatches(matches) {
     var button = document.createElement("button");
     button.textContent = "Favorit";
 
-    // disablement of button needs to be adjusted so it works with the new object structure in localStorage 
-    // (whole object not only id is stored)
-    if (favorites.includes(object.id)) {
-      button.disabled = true;
-    } else {
-      button.addEventListener("click", (function(obj, btn) {
-        return function() {
-          addToFavorites(obj);
-          btn.disabled = true;
-        };
-      })(object, button));
+    for (var j = 0; j < favorites.length; j++) {
+      if (favorites[j].id === object.id) {
+        button.disabled = true;
+      } else {
+        button.addEventListener("click", (function(obj, btn) {
+          return function() {
+            addToFavorites(obj);
+            btn.disabled = true;
+          };
+        })(object, button));
+      }
     }
     div.appendChild(button);
 
