@@ -2,7 +2,7 @@
 
 ## Anforderungen
 Projektbeschreibung
-MUST-HAVE-Anforderungen
+### MUST-HAVE-Anforderungen
 
 • Die Web-Anwendung verfügt über eine Homepage und einer weiteren Seite (freie Wahl)
 
@@ -15,7 +15,7 @@ eben am besten zu den Daten passt.
 • Zu jedem Suchergebnis können durch Anklicken zusätzliche Details angezeigt und wieder
 ausgeblendet werden (z.B. unterhalb des Sucheintrags).
 
-NICE-TO-HAVEs
+### NICE-TO-HAVEs
 
 • Es gibt die Möglichkeit Artist zu favorisieren / auf eine Merkliste zu setzten
 
