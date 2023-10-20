@@ -14,10 +14,10 @@ searchInput.addEventListener("input", function() {
   var searchTerm = searchInput.value;
 
   if (searchTerm === "") {
-    displaySearchmatches([]);
+    displaySearchMatches([]);
   } else {
     var matches = searchObjects(searchTerm);
-    displaySearchmatches(matches);
+    displaySearchMatches(matches);
   }
 });
 
@@ -63,9 +63,9 @@ function searchObjects(searchTerm) {
  * @returns html-container with a div for each object in matches.
  *         * each div contains the name, id and short description of the object
  *         * each div contains a button to add the object to the favorites
- *         * if the object is already in the favorites, the button SHOULD BE disabled
+ *          * if the object is already in the favorites, the button is disabled
  */
-function displaySearchmatches(matches) {
+function displaySearchMatches(matches) {
   var container = document.getElementById("search-results");
   container.innerHTML = "";
 
@@ -85,18 +85,27 @@ function displaySearchmatches(matches) {
     var button = document.createElement("button");
     button.textContent = "Favorit";
 
-    for (var j = 0; j < favorites.length; j++) {
-      if (favorites[j].id === object.id) {
-        button.disabled = true;
-      } else {
-        button.addEventListener("click", (function(obj, btn) {
-          return function() {
-            addToFavorites(obj);
-            btn.disabled = true;
-          };
-        })(object, button));
+    if (favorites.length <= 0) {
+      button.addEventListener("click", (function(obj, btn) {
+        return function() {
+          addToFavorites(obj);
+          btn.disabled = true;
+        };
+      })(object, button));
+    } else {
+      for (var j = 0; j < favorites.length; j++) {
+        if (favorites[j].id === object.id) {
+          button.disabled = true;
+        } else {
+          button.addEventListener("click", (function(obj, btn) {
+            return function() {
+              addToFavorites(obj);
+              btn.disabled = true;
+            };
+          })(object, button));
+        }
       }
-    }
+    }    
     div.appendChild(button);
 
     container.appendChild(div);
@@ -104,8 +113,8 @@ function displaySearchmatches(matches) {
 }
 
 /**
- * @param {object} object is an object that should be added to the favorites
- *            * element will be stored in localStorage
+ * @description adds an object to the favorites in localStorage
+ * @param {object} object from the objects array
  * @returns {void}
  */
 
@@ -113,6 +122,7 @@ function addToFavorites(object) {
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   favorites.push(object);
   localStorage.setItem("favorites", JSON.stringify(favorites));
+  
 }
 
 
