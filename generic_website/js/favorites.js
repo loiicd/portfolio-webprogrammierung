@@ -1,24 +1,36 @@
-function displayIdArray() {
-    var div = document.getElementById('ids-in-local-storage');
-    div.innerHTML = localStorage.getItem('favorites');
+function displayFavorites(favorites) {
+    console.log("dipslayFavorites")
+    const favoritesDiv = document.getElementById('favorites');
+    favoritesDiv.innerHTML = "";
+    if (favorites.length === 0) {
+        favoritesDiv.innerHTML = "You dont have saved any favorites yet.";
+        return;
+    }
+    for (var i = 0; i < favorites.length; i++) {
+        var object = favorites[i];
+        var div = document.createElement("div");
+        div.innerHTML = "<h2>" + object.name + " " + object.id +"</h2><p>" + object.short_description + "</p>";
+        var button = document.createElement("button");
+        button.textContent = "Remove";
+        button.addEventListener("click", (function(obj) {
+        return function() {
+            removeFavorite(obj);
+        };
+        })(object));
+        div.appendChild(button);
+        favoritesDiv.appendChild(div);
+    }
 }
 
-function displayFavorites() {
-  let html = '';
-  const favorites = JSON.parse(localStorage.getItem('favorites'));
-  console.log(favorites);
-  for (let i = 0; i < favorites.length; i++) {
-      const favorite = getObjectById(favorites[i]);
-      if (favorite) {
-          html += '<div class="object">';
-          html += '<p>' + favorite.name + '</p>';
-          //html += '<img src="' + favorite.image + '" alt="' + favorite.name + '">';
-          //html += '<button onclick="removeFromFavorites(' + favorite + ')">Remove from Favorites</button>';
-          html += '<p>' + favorite.description + '</p>';
-          html += '</div>';
-      }
+
+
+function removeFavorite(object) {
+  var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  for (var i = 0; i < favorites.length; i++) {
+    if (favorites[i].id === object.id) {
+      favorites.splice(i, 1);
+    }
   }
-  favoritesDisplay.innerHTML = html;
-  favoritesDisplay.scrollIntoView({behavior: "smooth"});
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  displayFavorites();
 }
-  
