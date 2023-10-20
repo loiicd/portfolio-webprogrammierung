@@ -32,5 +32,6 @@ function removeFavorite(object) {
     }
   }
   localStorage.setItem("favorites", JSON.stringify(favorites));
-  displayFavorites();
+  var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  displayFavorites(favorites);
 }
