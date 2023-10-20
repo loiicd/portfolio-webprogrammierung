@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+    <header>
+        <img src="../assets/logo_header.png" alt="My Website Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="objects.html">Objects</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+                <li><a href="contact.html">Contact</a></li>                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Favorites</h1>
+        <p>Here you can see your favorites.</p>
+
+        <div id="ids-in-local-storage"></div>
+        <div id="favorites-display"></div>
+
+        <script>
+            // needs to be refactored to use the favorites.js file
+            var div = document.getElementById('ids-in-local-storage');
+            div.innerHTML = localStorage.getItem('favorites');
+        </script>
+
+            
+        <script>
+            // needs to be refactored to use the favorites.js file
+            var favoritesDisplay = document.getElementById('favorites-display');
+            let html = '';
+            const favorites = JSON.parse(localStorage.getItem('favorites'));
+
+            for (let i = 0; i < favorites.length; i++) {
+                const favorite = favorites[i];
+                console.log(favorite.id);
+                console.log(favorite.name);
+                if (favorite) {
+                    html += '<div class="object">';
+                    html += '<h2>' + favorite.name + " " + favorite.id + '</h2>';
+                    //html += '<img src="' + favorite.image + '" alt="' + favorite.name + '">';
+                    //html += '<button onclick="removeFromFavorites(' + favorite + ')">Remove from Favorites</button>';
+                    html += '<p>' + favorite.short_description + '</p>';
+                    html += '</div>';
+                }
+            }
+            favoritesDisplay.innerHTML = html;
+            favoritesDisplay.scrollIntoView({behavior: "smooth"});
+        </script>
+        
+    </main>
+    <footer>
+        <script src="../js/favorites.js"></script>
+        <div class="spacer"></div>
+        <p>&copy; 2023 My Website. All rights reserved.</p>
+        <p><a href="https://github.com/jacobrhn/22_3-web_engeneering" target="_blank">View in the Github</a></p>
+        <p><a href="impressum.html">Impressum</a></p>
+    </footer>
+</body>
+</html>
