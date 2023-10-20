@@ -3,12 +3,13 @@
  * It is based on the objects array from object_catalouge.js.
  */
 
-// searchInput is the input field in the search form
+/**
+ * @description  searchInput is the input field in the search form
+ */
 var searchInput = document.getElementById("search-input");
 
 /** 
- * event listener to the searchInput element
- * listens for changes to the input value. When the input value changes, the code retrieves the new search term from the searchInput element.
+ * @description event listener to the searchInput element. Listens for changes to the input value. When the input value changes, the code retrieves the new search term from the searchInput element.
  */ 
 searchInput.addEventListener("input", function() {
   var searchTerm = searchInput.value;
@@ -63,7 +64,7 @@ function searchObjects(searchTerm) {
  * @returns html-container with a div for each object in matches.
  *         * each div contains the name, id and short description of the object
  *         * each div contains a button to add the object to the favorites
- *          * if the object is already in the favorites, the button is disabled
+ *         * if the object is already in the favorites, the button is disabled
  */
 function displaySearchMatches(matches) {
   var container = document.getElementById("search-results");
