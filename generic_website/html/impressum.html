@@ -7,16 +7,34 @@
 </head>
 <body>
     <header>
-        <img src="../assets/logo_header.png" alt="My Website Logo" class="logo">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="objects.html">Objects</a></li>
-                <li><a href="favorites.html">Favorites</a></li>
-                <li><a href="contact.html">Contact</a></li>                
-            </ul>
-        </nav>
-    </header>
+        <div class="dineinsight-logo">
+           <a href="index.html">
+           <img src="\generic_website\assets\DS_Logo.PNG" alt="DineInsight Logo">
+           </a>
+       </div>
+       <nav>
+           <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="objects.html">Objects</a></li>
+               <li><a href="favorites.html">Favorites</a></li>
+               <li><a href="contact.html">Contact</a></li>                
+           </ul>
+       </nav>
+       <div class="search-bar">
+       <input type="text" id="searchInput" placeholder="Suche...">
+       <button id="searchButton">Suchen</button>
+       <div class="filter-options">
+           <label for="filter">Filter:</label>
+           <select id="filter">
+               <option value="all">Alle</option>
+               <option value="iphone">iPhone</option>
+               <option value="macbook">MacBook</option>
+               <option value="watch">Apple Watch</option>
+           </select>
+       </div>
+   </div>
+   </header>
+   
     <main>
         <h1>Impressum</h1>
         <p>Here you can find legal information about my website.</p>
