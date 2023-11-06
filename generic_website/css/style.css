@@ -141,6 +141,14 @@ button {
     
 }
 
+.favoriteResults {
+  width: 200px; 
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .result:hover {
     transform: scale(1.1);
 }
