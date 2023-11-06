@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function displayResults(results) {
-        
+        searchResults.innerHTML = "";
 
         if (results.length === 0) {
             searchResults.innerHTML = "<p>Keine Ergebnisse gefunden.</p>";
