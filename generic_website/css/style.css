@@ -121,10 +121,9 @@ button {
 
 .results {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 20px 20px 20px 0; /* Fügen Sie 20px rechten Rand hinzu, um Abstand von anderen Inhalten zu schaffen */
     padding: 20px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -139,6 +138,7 @@ button {
     text-align: center;
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
+    
 }
 
 .result:hover {
