@@ -122,7 +122,7 @@ button {
 .results {
     max-width: 800px;
     margin: 20px 20px 20px 0; /* Fügen Sie 20px rechten Rand hinzu, um Abstand von anderen Inhalten zu schaffen */
-    padding: 20px;
+    padding: 10px;
     background-color: white;
     display: flex;
     flex-wrap: wrap;
