@@ -6,20 +6,49 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <script src="../js/favorites.js"></script>
+<!-- <script src="../js/favorites.js"></script> -->
     <header>
-        <img src="../assets/logo_header.png" alt="My Website Logo" class="logo">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="objects.html">Objects</a></li>
-                <li><a href="favorites.html">Favorites</a></li>
-                <li><a href="contact.html">Contact</a></li>                
-            </ul>
-        </nav>
-    </header>
+        <div class="dineinsight-logo">
+           <a href="index.html">
+           <img src="\generic_website\assets\DS_Logo.PNG" alt="DineInsight Logo">
+           </a>
+       </div>
+       <nav>
+           <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="objects.html">Objects</a></li>
+               <li><a href="favorites.html">Favorites</a></li>
+               <li><a href="contact.html">Contact</a></li>                
+           </ul>
+       </nav>
+       <div class="search-bar">
+       <input type="text" id="searchInput" placeholder="Suche...">
+       <button id="searchButton">Suchen</button>
+       <div class="filter-options">
+           <label for="filter">Filter:</label>
+           <select id="filter">
+               <option value="all">Alle</option>
+               <option value="iphone">iPhone</option>
+               <option value="macbook">MacBook</option>
+               <option value="watch">Apple Watch</option>
+           </select>
+       </div>
+   </div>
+   </header>
+   
     <main>
         
+        
+        <h2>Favoriten </h2> 
+        <button id="favoritesButton">Favoriten anzeigen</button>
+        <section id="favoriteResults" class="results">
+        <!-- Favoriten werden hier angezeigt -->
+        </section>
+        <script type="module" src="\generic_website\js\search_and_favorites.js"></script>
+        <script type="module" src="\generic_website\js\object_catalouge.js"></script>
+
+
+        <!-- Favoriten werden hier angezeigt 
         <h1>Favorites</h1>
         <p>Here you can see your favorites.</p>
         <div id="favorites"></div>
@@ -28,7 +57,8 @@
             var favorites = JSON.parse(localStorage.getItem('favorites'));
             displayFavorites(favorites);
         </script>
-        
+    -->
+
     </main>
     <footer>
         <div class="spacer"></div>
