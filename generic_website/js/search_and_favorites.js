@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const favoriteResults = document.getElementById("favoriteResults");
 
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
+    let isFavoritesVisible = false;
     
 
     searchButton.addEventListener("click", function () {
@@ -32,11 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     favoritesButton.addEventListener("click", function () {
-        displayFavorites();
+        if (isFavoritesVisible) {
+            // Wenn Favoriten sichtbar sind, ausblenden
+            favoriteResults.style.display = "none";
+            favoritesButton.textContent = "Favoriten anzeigen";
+            isFavoritesVisible = false;
+        } else {
+            // Wenn Favoriten nicht sichtbar sind, anzeigen
+            displayFavorites();
+            favoriteResults.style.display = "flex";
+            favoritesButton.textContent = "Favoriten ausblenden";
+            isFavoritesVisible = true;
+        }
     });
 
     function displayResults(results) {
-        searchResults.innerHTML = "";
+        
 
         if (results.length === 0) {
             searchResults.innerHTML = "<p>Keine Ergebnisse gefunden.</p>";
@@ -138,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             favorites.forEach(favorite => {
                 const resultItem = createResultItem(favorite, true);
-
+                resultItem.classList.add("favorite");
                 favoriteResults.appendChild(resultItem);
             });
         }
