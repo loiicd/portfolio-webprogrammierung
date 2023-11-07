@@ -82,13 +82,11 @@ footer .container {
   align-items: center;
 }
 
-
-
-
 .menu {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  padding-inline-start: 0;
 }
 
 .menu li {
