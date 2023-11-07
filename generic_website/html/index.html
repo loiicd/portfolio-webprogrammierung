@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>DineInsight Pro</title>
     <link rel="stylesheet" href="../css/style.css">
-    <script type="module" src="../js/test.js"></script>
+    <script type="module" src="../js/search.js"></script>
+    <script type="module" src="../js/showData.js"></script>
 </head>
 <body>
     <header>
         <div class="dineinsight-logo">
             <a href="index.html">
-            <img src="..\assets\DS_Logo.PNG" alt="DineInsight Logo">
+            <img src="../assets/DS_Logo.PNG" alt="DineInsight Logo">
             </a>
         </div>
         <nav>
@@ -36,35 +37,17 @@
             </div>
         </div>
     </header>
-    <div class="headerExpand" id="headerExpand">
+    <div class="headerExpand" id="searchResults">
         <div class="container"></div>
     </div>
     <main class="container">
         <h1>Welcome to DineInsight Pro</h1>
-        <section id="searchResults" class="results">
+        <!-- <section id="searchResults" class="results">
             <span id="closeResults" class="close-button" style="display: none;">X</span>
-            <!-- Suchergebnisse werden hier angezeigt -->
-        </section>
+            Suchergebnisse werden hier angezeigt
+        </section> -->
         
-    
-        <ul class="menu">
-            <li>
-                <img src="..\assets\pizza.png" alt="Pizza">
-                <h2>Pizza</h2>
-                <p>Delicious pizza with fresh mozzarella and basil.</p>
-            </li>
-            <li>
-                <img src="..\assets\burger.png" alt="Burger">
-                <h2>Burger</h2>
-                <p>Classic burger with a juicy patty, lettuce, and tomato.</p>
-            </li>
-            <li>
-                <img src="..\assets\pasta.png" alt="Pasta">
-                <h2>Pasta</h2>
-                <p>Delicious pasta with rich sauce and parmesan cheese.</p>
-            </li>
-            <!-- Weitere Speisen hier einfügen -->
-        </ul>
+        <ul class="menu" id="dineMenu"></ul>
 
         <h2>Favoriten </h2> 
         <button id="favoritesButton">Favoriten anzeigen</button>
@@ -73,8 +56,7 @@
         </section>
     </main>
 
-    <!-- <script type="module" src="../js/search_and_favorites.js"></script>
-    <script type="module" src="../js/object_catalouge.js"></script> -->
+    <!-- <script type="module" src="../js/search_and_favorites.js"></script> -->
     
     <footer>
         <div class="container">
