@@ -191,3 +191,16 @@ button {
   font-size: 20px; 
   color: #333;   
 }
+
+.headerExpand {
+  background-color: #333;
+}
+
+.headerExpand p {
+  color: #ffff;
+}
+
+.headerExpand li {
+  color: #ffff; 
+  list-style: none;
+}
