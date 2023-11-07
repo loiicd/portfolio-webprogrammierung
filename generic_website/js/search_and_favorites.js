@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     let isFavoritesVisible = false;
     
-
+    //searchbutton
     searchButton.addEventListener("click", function () {
         const searchTerm = searchInput.value.toLowerCase();
         const selectedFilter = filterSelect.value;
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         displayResults(filteredResults);
     });
 
+    //favoritesbuttonvisibility
     favoritesButton.addEventListener("click", function () {
         if (isFavoritesVisible) {
             // Wenn Favoriten sichtbar sind, ausblenden
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    //searchresults
     function displayResults(results) {
         searchResults.innerHTML = "";
 
@@ -63,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    //resultitem
     function createResultItem(result, isFavorite) {
         const resultItem = document.createElement("div");
         resultItem.classList.add("result");
@@ -102,6 +105,21 @@ document.addEventListener("DOMContentLoaded", function () {
         return resultItem;
     }
 
+    //closeResultButton
+    const closeResultsButton = document.getElementById("closeResults");
+
+    closeResultsButton.addEventListener("click", function () {
+        searchResults.style.display = "none"; // Oder eine andere Methode, um die Suchergebnisse auszublenden
+        closeResultsButton.style.display = "none"; // Schließ-Symbol ausblenden
+    });
+
+    searchButton.addEventListener("click", function () {
+        // Code zum Anzeigen der Suchergebnisse
+        searchResults.style.display = "flex"; 
+        closeResultsButton.style.display = "block"; // Schließ-Symbol anzeigen
+    });
+
+    //favoritebutton
     function createFavoriteButton(result) {
         const favoriteButton = document.createElement("button");
         favoriteButton.textContent = "Zu Favoriten hinzufügen";
@@ -113,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return favoriteButton;
     }
 
+    //unfavoritebutton
     function createUnfavoriteButton(result) {
         const unfavoriteButton = document.createElement("button");
         unfavoriteButton.textContent = "Aus Favoriten entfernen";
@@ -123,10 +142,12 @@ document.addEventListener("DOMContentLoaded", function () {
         return unfavoriteButton;
     }
 
+    //isfavorite
     function isFavorite(result) {
         return favorites.some(favorite => favorite.title === result.title);
     }
 
+    //addtofavorites
     function addToFavorites(result) {
         if (!isFavorite(result)) {
             favorites.push(result);
@@ -135,12 +156,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     
-
+    //removefromfavorites
     function removeFromFavorites(result) {
         favorites = favorites.filter(favorite => favorite.title !== result.title);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
 
+    //displayfavorites
     function displayFavorites() {
         favoriteResults.innerHTML = "";
 
@@ -154,6 +176,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     }
+
+
 });
 
 
