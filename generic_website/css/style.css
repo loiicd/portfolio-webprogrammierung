@@ -46,6 +46,26 @@ header .container {
   justify-content: space-between;
 }
 
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin-right: 80px; /* Abstand zwischen den Links */
+  transition: transform 0.2s ease-in-out;
+}
+nav li:hover {
+  transform: scale(1.1); /* Beispiel: Vergrößern des Links beim Hover */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
 img {
   max-width: 100%;
   height: auto;
