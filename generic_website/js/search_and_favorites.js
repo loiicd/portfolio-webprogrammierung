@@ -4,7 +4,7 @@
  */
 
 
-import { data } from "./object_catalouge.js";   
+import data from "./object_catalouge.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("searchInput");

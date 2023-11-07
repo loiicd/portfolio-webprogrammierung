@@ -4,9 +4,11 @@
  */
 
 // Daten für die Suchergebnisse (Beispiel)
-export const data = [
-    { title: "iPhone 13", description: "Das neueste iPhone-Modell.", image:"/generic_website/assets/iphone.png"},
-    { title: "MacBook Air", description: "Ein leichtes und leistungsstarkes Notebook.", image:"/generic_website/assets/macbook.png"},
-    { title: "Apple Watch Series 7", description: "Die neueste Smartwatch von Apple.", image:"/generic_website/assets/watch.png"},
+const data = [
+    { title: "iPhone 13", description: "Das neueste iPhone-Modell.", image:"../assets/iphone.png"},
+    { title: "MacBook Air", description: "Ein leichtes und leistungsstarkes Notebook.", image:"../assets/macbook.png"},
+    { title: "Apple Watch Series 7", description: "Die neueste Smartwatch von Apple.", image:"../assets/watch.png"},
     // Weitere Suchergebnisse hier
 ];
+
+export default data
