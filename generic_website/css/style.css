@@ -107,6 +107,7 @@ footer .container {
 
 .menu li:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .menu img {
