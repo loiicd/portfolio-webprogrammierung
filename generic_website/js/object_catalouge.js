@@ -23,10 +23,10 @@ export const dineData = [
     { title: "Veggie Burger", description: "Ein vegetarischer Burger mit Gemüsepatty und Avocado.", category: "Burger", image: "../assets/Burger.png", vegetarisch: true },
     { title: "Sushi Combo", description: "Eine Auswahl an frischem Sushi mit verschiedenen Sorten und Sojasauce.", category: "Sushi", image: "../assets/Sushi_Combo.png", vegetarisch: false },
     { title: "Sashimi Deluxe", description: "Frische Sashimi-Scheiben von Thunfisch und Lachs.", category: "Sushi", image: "../assets/Sashimi.png", vegetarisch: false },
-    { title: "Tempura Roll", description: "Sushi-Rolle mit knusprig gebackenem Tempura und Avocado.", category: "Sushi", image: "../assets/DS_Logo.png", vegetarisch: false },
-    { title: "Caesar Salad", description: "Ein knackiger Caesar-Salat mit Hühnchen, Croutons und Caesar-Dressing.", category: "Salat", image: "../assets/DS_Logo.png", vegetarisch: false },
-    { title: "Greek Salad", description: "Griechischer Salat mit Tomaten, Gurken, Oliven und Feta-Käse.", category: "Salat", image: "../assets/DS_Logo.png", vegetarisch: true },
-    { title: "Cobb Salad", description: "Cobb-Salat mit Hühnchen, Bacon, Eiern und Avocado.", category: "Salat", image: "../assets/DS_Logo.png", vegetarisch: false }
+    { title: "Tempura Roll", description: "Sushi-Rolle mit knusprig gebackenem Tempura und Avocado.", category: "Sushi", image: "../assets/Tempura_Roll.png", vegetarisch: false },
+    { title: "Caesar Salad", description: "Ein knackiger Caesar-Salat mit Hühnchen, Croutons und Caesar-Dressing.", category: "Salat", image: "../assets/Caesar_Salad.png", vegetarisch: false },
+    { title: "Greek Salad", description: "Griechischer Salat mit Tomaten, Gurken, Oliven und Feta-Käse.", category: "Salat", image: "../assets/Greek_Salad.png", vegetarisch: true },
+    { title: "Cobb Salad", description: "Cobb-Salat mit Hühnchen, Bacon, Eiern und Avocado.", category: "Salat", image: "../assets/Cobb_Salad.png", vegetarisch: false }
 ];
 
 export default data
