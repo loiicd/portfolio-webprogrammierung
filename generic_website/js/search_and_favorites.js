@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
             searchResults.innerHTML = "<p>Keine Ergebnisse gefunden.</p>";
         } else {
             results.forEach(result => {
-                const resultItem = createResultItem(result, false);
+                const resultItem = createResultItem(result, result.isFavorite);
 
                 const favoriteButton = createFavoriteButton(result);
                 resultItem.appendChild(favoriteButton);
