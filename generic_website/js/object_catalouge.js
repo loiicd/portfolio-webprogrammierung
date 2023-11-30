@@ -11,7 +11,6 @@ const data = [
     // Weitere Suchergebnisse hier
 ];
 
-<<<<<<< HEAD
 export const dineData = [
     { title: "Pizza Salami", description: "Eine köstliche Pizza mit Salami und Käse.", category: "Pizza", image: "../assets/Pizza_Salami.png", vegetarisch: false },
     { title: "Pizza Margherita", description: "Eine klassische Pizza mit Tomaten, Mozzarella und Basilikum.", category: "Pizza", image: "../assets/Pizza_Margherita.png", vegetarisch: true },
@@ -30,6 +29,4 @@ export const dineData = [
     { title: "Cobb Salad", description: "Cobb-Salat mit Hühnchen, Bacon, Eiern und Avocado.", category: "Salat", image: "../assets/Cobb_Salad.png", vegetarisch: false }
 ];
 
-=======
->>>>>>> parent of a9f10dd (add new search)
 export default data
