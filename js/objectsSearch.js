@@ -1,17 +1,15 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import { dineData } from './object_catalouge.js';
+import data, { dineData } from './object_catalouge.js';
 
-const searchInput = document.getElementById('search-input');
+const objects = dineData
 
 const container = new ObjectContainer('objectDisplay-Container');
+container.render(objects);
 
-searchInput.addEventListener('input', () => {
-  const searchText = searchInput.value;
-  if (searchText) {
-    const searchResults = dineData.filter(object => object.title.toLowerCase().includes(searchText.toLowerCase()));
-    container.render(searchResults);
-  } else {
-    container.render(dineData)
-  }
-});
+
+  /**
+  window.addEventListener('favoritesUpdated', () => {
+    renderObjects(dineData, 'objectDisplay-Container');
+  });
+   */
 
