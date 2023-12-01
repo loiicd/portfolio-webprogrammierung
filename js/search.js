@@ -13,6 +13,8 @@ const test = (searchInput, htmlElement, data) => {
   const filteredData = data.filter((item) =>
     item.title.toLowerCase().includes(searchInput.value.toLowerCase())
   )
+
+  
   if (searchInput.value !== '') {
     htmlElement.childNodes[1].innerHTML = `<p>${searchInput.value}</p>`
     if (filteredData.length === 0) {
