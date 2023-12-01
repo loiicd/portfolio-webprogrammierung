@@ -1,11 +1,11 @@
-import { renderObjects } from "./components/displayObjects.js";
+import { ObjectContainer } from './components/ObjectTile.js';
 
-var favorites = JSON.parse(localStorage.getItem("favorites"));
+let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+if (favorites.length === 0) {
+  container.container.innerHTML = 'Keine Favoriten vorhanden.';
+}
 
-renderObjects(favorites, 'objectDisplay-Container');
+const container = new ObjectContainer('objectDisplay-Container');
+container.render(favorites);
 
-// In Ihrer Haupt-Datei
-window.addEventListener('favoritesUpdated', () => {
-  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  renderObjects(favorites, 'objectDisplay-Container');
-});
+window.addEventListener('favoritesUpdated', () => {container.render(favorites);});
