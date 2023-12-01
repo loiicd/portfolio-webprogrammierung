@@ -3,7 +3,7 @@ function displayFavorites(favorites) {
     const favoritesDiv = document.getElementById('favorites');
     favoritesDiv.innerHTML = "";
     if (favorites.length === 0) {
-        favoritesDiv.innerHTML = "You dont have saved any favorites yet.";
+        favoritesDiv.innerHTML = "You dont have any saved favorites yet.";
         return;
     }
     for (var i = 0; i < favorites.length; i++) {
