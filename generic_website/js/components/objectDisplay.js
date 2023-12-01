@@ -1,5 +1,7 @@
+import { isFavorite, addToFavorites, removeFromFavorites } from "./updateFavorites.js";
 
-export function createObjectTile(object, container) {
+
+function createObjectTile(object, container) {
   const objectTile = document.createElement('div');
   objectTile.classList.add('object-tile');
 
@@ -9,10 +11,17 @@ export function createObjectTile(object, container) {
 
   const title = document.createElement('h3');
   title.textContent = object.title;
-
+  
   const addToFavoritesButton = document.createElement('button');
-  addToFavoritesButton.textContent = 'Add to Favorites';
-  addToFavoritesButton.addEventListener('click', () => addToFavorites(object));
+  if (isFavorite(object)) {
+    addToFavoritesButton.classList.add('remove-from-favorites');
+    addToFavoritesButton.textContent = 'Remove from Favourites';
+    addToFavoritesButton.addEventListener('click', () => removeFromFavorites(object));
+  } else {
+    addToFavoritesButton.classList.add('add-to-favorites');
+    addToFavoritesButton.textContent = 'Add to Favourites';
+    addToFavoritesButton.addEventListener('click', () => addToFavorites(object));
+  }
 
   const expandButton = document.createElement('a');
   expandButton.textContent = 'See Description';
@@ -35,16 +44,7 @@ export function createObjectTile(object, container) {
   container.appendChild(objectTile);
 }
 
-
-export function addToFavorites(object) {
-  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  favorites.push(object);
-  localStorage.setItem('favorites', JSON.stringify(favorites));
-  
-  console.log('Added to favorites:', object);
-}
-
-export function toggleExpand(objectTile, description, expandButton) {
+function toggleExpand(objectTile, expandButton) {
   const paragraph = objectTile.querySelector('p');
   if (paragraph.style.display === "none") {
     paragraph.style.display = "block";

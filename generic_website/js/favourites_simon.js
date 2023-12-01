@@ -33,8 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    
-
     //favoritebutton
     function createFavoriteButton(result) {
         const favoriteButton = document.createElement("button");
