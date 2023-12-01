@@ -204,3 +204,24 @@ button {
   color: #ffff; 
   list-style: none;
 }
+
+#objectDisplay-Container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.object-tile {
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px; /* Set a fixed width */
+  height: 350px; /* Set a fixed height */
+  overflow: auto; /* Add a scrollbar if the content is too long */
+}
