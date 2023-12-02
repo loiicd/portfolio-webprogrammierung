@@ -208,25 +208,48 @@ button {
 #objectDisplay-Container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
+  gap: 15px;
 }
 
 .object-tile {
+  position: relative;
   border: 1px solid #ccc;
-  margin: 10px;
   border-radius: 10px;
   padding: 10px;
   box-sizing: border-box;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 240px; /* Set a fixed width */
-  height: 340px; /* Set a fixed height */
+  width: 240px;
+  height: 340px;
   transition: transform 0.2s ease-in-out;
 }
 
 .object-tile:hover {
-  transform: scale(1.1); /* Skalieren Sie das Element auf 1.1, wenn die Maus darüber schwebt */
+  transform: scale(1.08);
+}
+
+.object-tile img {
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+.object-tile h2 {
+  margin: 10px 0;
+}
+
+.object-tile p {
+  margin: 10px 0;
+}
+
+.object-tile button {
+  margin-top: auto;
+}
+
+.favourites-icon {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
 }

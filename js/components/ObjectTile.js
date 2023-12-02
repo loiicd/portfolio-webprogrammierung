@@ -10,16 +10,46 @@ class ObjectTile {
     const objectTile = document.createElement('div');
     objectTile.classList.add('object-tile');
 
+    const tileHeader = document.createElement('div');
+    tileHeader.classList.add('tile-header');
+
     const image = document.createElement('img');
     image.src = this.object.image;
     image.alt = this.object.title;
 
-    const title = document.createElement('h3');
-    title.textContent = this.object.title;
+    const updateFavouritesIcon = document.createElement('img');
+    updateFavouritesIcon.src = 'assets/icons/favicon-false.png';
+    updateFavouritesIcon.classList.add('favourites-icon');
+    updateFavouritesIcon.addEventListener('click', () => this.updateFavorites());
+    this.updateFavoritesDisplay(updateFavouritesIcon);
+
+    tileHeader.append(image);
+    
+    const favouritesDiv = document.createElement('div');
+    favouritesDiv.classList.add('favourites-div');
+    favouritesDiv.append(updateFavouritesIcon);
+    
+    tileHeader.append(favouritesDiv);
+
+    const tileCenterButtons = document.createElement('div');
+    tileCenterButtons.classList.add('tile-center-buttons');
 
     const updateFavoritesButton = document.createElement('button');
     updateFavoritesButton.addEventListener('click', () => this.updateFavorites());
     this.updateFavoritesDisplay(updateFavoritesButton);
+
+    tileCenterButtons.append(updateFavoritesButton);
+
+    const tileTitle = document.createElement('div');
+    tileTitle.classList.add('tile-title');
+
+    const title = document.createElement('h3');
+    title.textContent = this.object.title;
+
+    tileTitle.append(title);
+
+    const tileDescription = document.createElement('div');
+    tileDescription.classList.add('tile-description');
 
     const expandButton = document.createElement('a');
     expandButton.textContent = 'See Description';
@@ -33,7 +63,9 @@ class ObjectTile {
     expandedText.textContent = this.object.description.length > 70 ? this.object.description.substring(0, 67) + '...' : this.object.description;
     expandedText.style.display = 'none';
 
-    objectTile.append(image, title, updateFavoritesButton, expandButton, expandedText);
+    tileDescription.append(expandButton, expandedText);
+
+    objectTile.append(tileHeader, tileCenterButtons, tileTitle, tileDescription);
 
     return objectTile;
   }
@@ -45,18 +77,27 @@ class ObjectTile {
       addToLocalStorage(this.object, "favorites");
     }
     this.updateFavoritesDisplay(this.element.querySelector('button'));
-    window.dispatchEvent(new Event('favoritesUpdated'));
+    this.updateFavoritesDisplay(this.element.querySelector('div.favourites-div img'));
+    window.dispatchEvent(new Event('localStorageUpdated'));
   }
 
-  updateFavoritesDisplay(button) {
+  updateFavoritesDisplay(element) {
     if (isInLocalStorage(this.object, "favorites")) {
-      button.classList.add('remove-from-favorites');
-      button.classList.remove('add-to-favorites');
-      button.textContent = 'Remove from Favourites';
+      element.classList.add('remove-from-favorites');
+      element.classList.remove('add-to-favorites');
+      if (element.tagName === 'BUTTON') {
+        element.textContent = 'Remove from Favourites';
+      } else {
+        element.src = '../assets/icons/favicon-true.png';
+      }
     } else {
-      button.classList.add('add-to-favorites');
-      button.classList.remove('remove-from-favorites');
-      button.textContent = 'Add to Favourites';
+      element.classList.add('add-to-favorites');
+      element.classList.remove('remove-from-favorites');
+      if (element.tagName === 'BUTTON') {
+        element.textContent = 'Add to Favourites';
+      } else {
+        element.src = '../assets/icons/favicon-false.png';
+      }
     }
   }
 
