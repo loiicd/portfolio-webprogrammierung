@@ -1,4 +1,4 @@
-import { isFavorite, addToFavorites, removeFromFavorites } from "./updateFavorites.js";
+import { isInLocalStorage, removeFromLocalStorage, addToLocalStorage } from "./updateLocalStorage.js";
 
 class ObjectTile {
   constructor(object) {
@@ -39,17 +39,17 @@ class ObjectTile {
   }
 
   updateFavorites() {
-    if (isFavorite(this.object)) {
-      removeFromFavorites(this.object);
+    if (isInLocalStorage(this.object, "favorites")) {
+      removeFromLocalStorage(this.object, "favorites");
     } else {
-      addToFavorites(this.object);
+      addToLocalStorage(this.object, "favorites");
     }
     this.updateFavoritesDisplay(this.element.querySelector('button'));
     window.dispatchEvent(new Event('favoritesUpdated'));
   }
 
   updateFavoritesDisplay(button) {
-    if (isFavorite(this.object)) {
+    if (isInLocalStorage(this.object, "favorites")) {
       button.classList.add('remove-from-favorites');
       button.classList.remove('add-to-favorites');
       button.textContent = 'Remove from Favourites';
