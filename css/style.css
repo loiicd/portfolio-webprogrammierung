@@ -275,3 +275,41 @@ button {
 }
 
 
+.error-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.error-page h1 {
+  font-size: 48px;
+  color: #050000;
+  margin-top: 20px;
+}
+
+.error-page p {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.error-page a {
+  font-size: 18px;
+  color: #1fa0f6;
+  text-decoration: none;
+}
+
+.error-page a:hover {
+  text-decoration: underline;
+}
+.error-page img {
+  max-width: 50%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+
