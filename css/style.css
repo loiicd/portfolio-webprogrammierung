@@ -234,16 +234,35 @@ button {
   margin-top: 10px;
 }
 
-.object-tile h2 {
-  margin: 10px 0;
+.object-tile button {
+  margin-top: auto;
+  background-color: #1fa0f6;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.object-tile button:hover {
+  background-color: #005999;
 }
 
 .object-tile p {
-  margin: 10px 0;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  padding: 0px;
 }
 
-.object-tile button {
-  margin-top: auto;
+.object-tile a {
+  color: #1fa0f6;
+  text-decoration: none;
+  align-self: start;
+  display: flex; /* Verwenden Sie Flexbox für die Ausrichtung */
+  justify-content: center; /* Zentriert den Inhalt horizontal */
+  align-items: center; /* Zentriert den Inhalt vertikal */
 }
 
 .favourites-icon {
@@ -252,4 +271,7 @@ button {
   right: 10px;
   width: 35px;
   height: 35px;
+  cursor: pointer;
 }
+
+

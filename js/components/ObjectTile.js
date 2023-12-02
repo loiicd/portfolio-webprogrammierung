@@ -33,12 +33,11 @@ class ObjectTile {
 
     const tileCenterButtons = document.createElement('div');
     tileCenterButtons.classList.add('tile-center-buttons');
-
-    const updateFavoritesButton = document.createElement('button');
-    updateFavoritesButton.addEventListener('click', () => this.updateFavorites());
-    this.updateFavoritesDisplay(updateFavoritesButton);
-
-    tileCenterButtons.append(updateFavoritesButton);
+    
+    const updateOrderButton = document.createElement('button');
+    updateOrderButton.addEventListener('click', () => this.updateOrder());
+    this.updateOrderDisplay(updateOrderButton);
+    tileCenterButtons.append(updateOrderButton);
 
     const tileTitle = document.createElement('div');
     tileTitle.classList.add('tile-title');
@@ -52,8 +51,8 @@ class ObjectTile {
     tileDescription.classList.add('tile-description');
 
     const expandButton = document.createElement('a');
-    expandButton.textContent = 'See Description';
-    expandButton.href = '#';
+    expandButton.textContent = 'Description ...';
+    expandButton.href = '##';
     expandButton.addEventListener('click', (event) => {
       event.preventDefault();
       this.toggleExpand(objectTile, expandButton);
@@ -76,27 +75,41 @@ class ObjectTile {
     } else {
       addToLocalStorage(this.object, "favorites");
     }
-    this.updateFavoritesDisplay(this.element.querySelector('button'));
     this.updateFavoritesDisplay(this.element.querySelector('div.favourites-div img'));
     window.dispatchEvent(new Event('localStorageUpdated'));
   }
 
   updateFavoritesDisplay(element) {
     if (isInLocalStorage(this.object, "favorites")) {
-      element.classList.add('remove-from-favorites');
-      element.classList.remove('add-to-favorites');
+      element.src = '../assets/icons/favicon-true.png';
+    } else {
+      element.src = '../assets/icons/favicon-false.png';
+    }
+  }
+
+  updateOrder() {
+    if (isInLocalStorage(this.object, "orders")) {
+      removeFromLocalStorage(this.object, "orders");
+    } else {
+      addToLocalStorage(this.object, "orders");
+    }
+    this.updateOrderDisplay(this.element.querySelector('button'));
+    this.updateOrderDisplay(this.element.querySelector('div.favourites-div img'));
+    window.dispatchEvent(new Event('localStorageUpdated'));
+  }
+
+  updateOrderDisplay(element) {
+    if (isInLocalStorage(this.object, "orders")) {
+      element.classList.add('remove-from-orders');
+      element.classList.remove('add-to-orders');
       if (element.tagName === 'BUTTON') {
-        element.textContent = 'Remove from Favourites';
-      } else {
-        element.src = '../assets/icons/favicon-true.png';
+        element.textContent = 'Remove from Order';
       }
     } else {
-      element.classList.add('add-to-favorites');
-      element.classList.remove('remove-from-favorites');
+      element.classList.add('add-to-orders');
+      element.classList.remove('remove-from-orders');
       if (element.tagName === 'BUTTON') {
-        element.textContent = 'Add to Favourites';
-      } else {
-        element.src = '../assets/icons/favicon-false.png';
+        element.textContent = 'Add to Order';
       }
     }
   }
@@ -105,10 +118,10 @@ class ObjectTile {
     const paragraph = objectTile.querySelector('p');
     if (paragraph.style.display === "none") {
       paragraph.style.display = "block";
-      expandButton.style.display = "none";
+      expandButton.textContent = 'Hide';
     } else {
       paragraph.style.display = "none";
-      expandButton.style.display = "block";
+      expandButton.textContent = 'Description ...';
     }
   }
 
