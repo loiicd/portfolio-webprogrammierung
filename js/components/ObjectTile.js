@@ -1,4 +1,28 @@
+/**
+ * @module js/components/ObjectTile.js
+ */
+
 import { isInLocalStorage, removeFromLocalStorage, addToLocalStorage } from "./updateLocalStorage.js";
+
+
+/**
+ * @description Class which represents a container of Object Tiles.
+ * @constructor id of html-div to display the container in.
+ * @function render() takes a array of Objects which will be displayed.
+ */
+class ObjectContainer {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+  }
+
+  render(objects) {
+    this.container.innerHTML = '';
+    objects.forEach(object => {
+      const tile = new ObjectTile(object);
+      tile.render(this.container);
+    });
+  }
+}
 
 class ObjectTile {
   constructor(object) {
@@ -18,7 +42,6 @@ class ObjectTile {
     image.alt = this.object.title;
 
     const updateFavouritesIcon = document.createElement('img');
-    updateFavouritesIcon.src = 'assets/icons/favicon-false.png';
     updateFavouritesIcon.classList.add('favourites-icon');
     updateFavouritesIcon.addEventListener('click', () => this.updateFavorites());
     this.updateFavoritesDisplay(updateFavouritesIcon);
@@ -127,20 +150,6 @@ class ObjectTile {
 
   render(container) {
     container.append(this.element);
-  }
-}
-
-class ObjectContainer {
-  constructor(containerId) {
-    this.container = document.getElementById(containerId);
-  }
-
-  render(objects) {
-    this.container.innerHTML = '';
-    objects.forEach(object => {
-      const tile = new ObjectTile(object);
-      tile.render(this.container);
-    });
   }
 }
 
