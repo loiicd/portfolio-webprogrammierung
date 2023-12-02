@@ -1,5 +1,5 @@
 /**
- * @module js/components/updateLocalStorage
+ * @module js/components/updateLocalStorage.js
  * @description Opperates on LocalStorage to add and remove objects from it.
  */
 
