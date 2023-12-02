@@ -279,8 +279,7 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 
 .error-page h1 {
@@ -296,7 +295,7 @@ button {
 }
 
 .error-page a {
-  font-size: 18px;
+  font-size: 20px;
   color: #1fa0f6;
   text-decoration: none;
 }
@@ -305,11 +304,11 @@ button {
   text-decoration: underline;
 }
 .error-page img {
-  max-width: 50%;
+  max-width: 40%;
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  
+  margin-bottom: 50px;/* Add margin-bottom to create space between image and footer */
 }
 
 
