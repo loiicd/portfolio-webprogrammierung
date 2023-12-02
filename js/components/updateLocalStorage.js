@@ -12,8 +12,8 @@ export function addToLocalStorage(object, key) {
   storedObjects.push(object);
   localStorage.setItem(key, JSON.stringify(storedObjects));
 
-  window.dispatchEvent(new CustomEvent('favoritesUpdated'));
-  console.log('Added to LocalStorage:', object);
+  window.dispatchEvent(new CustomEvent('localStorageUpdated'));
+  console.log('Removed from LocalStorage', key, object);
 }
 
 export function removeFromLocalStorage(object, key) {
@@ -23,7 +23,7 @@ export function removeFromLocalStorage(object, key) {
     storedObjects.splice(index, 1);
     localStorage.setItem(key, JSON.stringify(storedObjects));
 
-    window.dispatchEvent(new CustomEvent('favoritesUpdated'));
-    console.log('Removed from LocalStorage:', object);
+    window.dispatchEvent(new CustomEvent('localStorageUpdated'));
+    console.log('Removed from LocalStorage', key, object);
   }
 }
