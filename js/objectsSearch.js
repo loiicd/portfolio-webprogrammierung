@@ -1,5 +1,5 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import { dineData } from './object_catalouge.js';
+import { dineData } from './components/objectData.js';
 
 const searchInput = document.getElementById('search-input');
 

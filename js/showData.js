@@ -1,4 +1,4 @@
-import { dineData as data } from './object_catalouge.js'
+import { dineData as data } from './components/objectData.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('dineMenu')
