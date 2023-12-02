@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>DineInsight Pro</title>
     <link rel="stylesheet" href="../css/style.css">
-    <script type="module" src="../js/search.js"></script>
-    <script type="module" src="../js/showData.js"></script>
+    <script type="module" src="../js/index.js"></script>
 </head>
 <body>
     <header>
@@ -42,21 +41,13 @@
     </div>
     <main class="container">
         <h1>Welcome to DineInsight Pro</h1>
-        <!-- <section id="searchResults" class="results">
-            <span id="closeResults" class="close-button" style="display: none;">X</span>
-            Suchergebnisse werden hier angezeigt
-        </section> -->
+        <div class="recomendationsContainer">
+            <h2>Todays Recomendations</h2>
+            <div id="objectDisplay-Container"></div>
+        </div>
         
-        <ul class="menu" id="dineMenu"></ul>
-
-        <h2>Favoriten </h2> 
-        <button id="favoritesButton">Favoriten anzeigen</button>
-        <section id="favoriteResults" class="results">
-        <!-- Favoriten werden hier angezeigt -->
-        </section>
+        
     </main>
-
-    <!-- <script type="module" src="../js/search_and_favorites.js"></script> -->
     
     <footer>
         <div class="container">
