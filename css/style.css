@@ -59,7 +59,7 @@ nav ul {
 }
 
 nav li {
-  margin-right: 300px; /* Abstand zwischen den Links */
+  margin-right: 250px; /* Abstand zwischen den Links */
   transition: transform 0.2s ease-in-out;
 }
 nav li:hover {
