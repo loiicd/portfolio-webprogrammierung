@@ -5,6 +5,7 @@
 - margin von nav li anpassen, so dass sie nicht hard-codierten abstand haben sondern sich dynamisch über den header verteilen. aktuell wird der header falsch angezeigt
 - search component implementieren und in object.js aufrufen
 - search um filter funktionalität erweitern
+- move "charts" to PW-secured space (dummy)
 
 ## should
 - order page implementieren
@@ -12,7 +13,10 @@
 object tile optimieren, sodass spacing gleichmässiger ist und bilder überall gleich gross
 
 ## want
-- migrate to github pages und devl branch einrichten (dafür müssen alle Links gecheckt werden und index.html in root folder verschoben werden)
+- deploy to github pages 
+    - dafür müssen alle Links gecheckt werden
+    - index.html in root folder verschoben
+    - zusätzliche devl branch eingerichtet werden
 - oder direkt auf loics strato webspace deployen
 
 
