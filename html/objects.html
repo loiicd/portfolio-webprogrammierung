@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
     <title>Search Objects</title>
+    <script type="module" src="../js/objects.js"></script>
 </head>
 <body>
     <header>
@@ -29,7 +30,7 @@
         <p>Here you can browse and search all the Objects</p>
         <input type="text" id="search-input" placeholder="Search...">
         <select id='search-filter' multiple>
-            <option value="">-</option>
+            <option value="none" selected>-</option>
             <option value="vegetarian">Vegetarisch</option>
             <option value="vegan">Vegan</option>
             <option value="gluten_free">Glutenfrei</option>
@@ -37,7 +38,6 @@
         <div id="search-results"></div>
         <p>display Objects</p>
         <div id="objectDisplay-Container"></div>
-        <script type="module" src="../js/objects.js"></script>
     </main>
     
     <footer>

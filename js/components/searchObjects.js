@@ -1,41 +1,28 @@
 /**
- * Search objects by title and description
+ * Filter objects by title with search text
  * @param {string} searchText - text to search
- * @param {string[]} searchFilter - array of search filters
  * @param {array} objects - array of objects to search
  * @return {array} - array of objects that match the search
- * 
- * @todo implement filter by category
  */
-
-export function searchObjects(searchText, searchFilter, objects) {
-  // return objects.filter(object => {
-  //   return object.title.toLowerCase().includes(searchText.toLowerCase())
-  // });
-
+export const searchObjects = (searchText, objects) => {
   return objects.filter(object => {
-    const titleMatch = object.title.toLowerCase().includes(searchText.toLowerCase());
-    if (searchFilter.length != 0) {
-      const dietMatch = filterDiet(searchFilter, titleMatch);
-      return dietMatch;
-    } else {
-      return titleMatch;  
-    };
+    return object.title.toLowerCase().includes(searchText.toLowerCase());
   });
 };
 
-function filterDiet(searchFilter, object) {
-  const dietMatch = searchFilter.every(preference => {
-    switch (preference) {
-      case 'vegetarian':
-        return object.diet && object.diet.vegetarian;
-      case 'gluten_free':  
-        return object.diet && object.diet.gluten_free;
-      case 'vegan':
-        return object.diet && object.diet.vegan;
-      default:
-        return false;
-    };
+/**
+ * Filter objects by multiple filters
+ * @param {string[]} searchFilter - list of filters
+ * @param {array} objects - array of objects to search
+ * @return {array} - array of objects that match the filters
+ */
+export const filterDiet = (searchFilter, objects) => {
+  if (searchFilter.includes('none')) return objects;
+  return objects.filter(object => {
+    return (
+      (searchFilter.includes('vegetarian') && object.diet.vegetarian) ||
+      (searchFilter.includes('vegan') && object.diet.vegan) ||
+      (searchFilter.includes('gluten_free') && object.diet.gluten_free)
+    );    
   });
-  return dietMatch
-}
+};
