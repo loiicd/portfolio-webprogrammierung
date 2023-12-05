@@ -1,7 +1,6 @@
 import { ObjectContainer } from './components/ObjectTile.js';
 import { dineData } from './components/objectData.js';
-import { searchObjects } from './components/searchObjects.js';
-import { filterDiet } from './components/searchObjects.js';
+import { filterBySearchText, filterByAttributes } from './components/objectFilters.js';
 
 
 //- * * * * * * * * *
@@ -14,8 +13,8 @@ const renderReducedData = () => {
   for (var i = 0; i < searchFilter.length; i++) {
     if (searchFilter[i].selected) selectedSearchFilter.push(searchFilter[i].value);
   }
-  const searchResults = searchObjects(searchText, dineData);
-  const filterResults = filterDiet(selectedSearchFilter, dineData);
+  const searchResults = filterBySearchText(searchText, dineData);
+  const filterResults = filterByAttributes(selectedSearchFilter, dineData);
   const overlappingResults = searchResults.filter(result => filterResults.includes(result));
   container.render(overlappingResults);
 }

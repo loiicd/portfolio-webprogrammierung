@@ -4,19 +4,19 @@
  * @param {array} objects - array of objects to search
  * @return {array} - array of objects that match the search
  */
-export const searchObjects = (searchText, objects) => {
+export const filterBySearchText = (searchText, objects) => {
   return objects.filter(object => {
     return object.title.toLowerCase().includes(searchText.toLowerCase());
   });
 };
 
 /**
- * Filter objects by multiple filters
- * @param {string[]} searchFilter - list of filters
+ * Filter objects by multiple attributes
+ * @param {string[]} searchFilter - list of attributes
  * @param {array} objects - array of objects to search
- * @return {array} - array of objects that match the filters
+ * @return {array} - array of objects that match the attributes
  */
-export const filterDiet = (searchFilter, objects) => {
+export const filterByAttributes = (searchFilter, objects) => {
   if (searchFilter.includes('none')) return objects;
   return objects.filter(object => {
     return (
