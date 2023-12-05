@@ -6,20 +6,25 @@ import { filterBySearchText, filterByAttributes } from './components/objectFilte
 //- * * * * * * * * *
 //- * * Functions * *
 //- * * * * * * * * *
+const renderRawData = () => container.render(dineData);
+
 const renderReducedData = () => {
   const searchText = searchInput.value;
   const searchFilter = searchFilterSelect.options;
-  let selectedSearchFilter = [];
-  for (var i = 0; i < searchFilter.length; i++) {
-    if (searchFilter[i].selected) selectedSearchFilter.push(searchFilter[i].value);
-  }
+  const selectedSearchFilter = getSelectedFilter(searchFilter);
   const searchResults = filterBySearchText(searchText, dineData);
   const filterResults = filterByAttributes(selectedSearchFilter, dineData);
   const overlappingResults = searchResults.filter(result => filterResults.includes(result));
   container.render(overlappingResults);
 }
 
-const renderRawData = () => container.render(dineData);
+const getSelectedFilter = (searchFilter) => {
+  let selectedSearchFilter = [];
+  for (var i = 0; i < searchFilter.length; i++) {
+    if (searchFilter[i].selected) selectedSearchFilter.push(searchFilter[i].value);
+  }
+  return selectedSearchFilter
+}
 
 
 //- * * * * * * * * * * * * *
