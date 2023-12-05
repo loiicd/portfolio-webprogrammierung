@@ -4,7 +4,7 @@
  */
 
 export const dineData = [
-    {   id: 1001, title: "Pizza Salami", description: "Eine köstliche Pizza mit Salami und Käse.", category: "Pizza", image: "../../assets/Pizza_Salami.png", diet: {vegetarian: false, gluten_free: false, vegan: false}},
+    { id: 1001, title: "Pizza Salami", description: "Eine köstliche Pizza mit Salami und Käse.", category: "Pizza", image: "../../assets/Pizza_Salami.png", diet: {vegetarian: false, gluten_free: false, vegan: false}},
     { id: 1002, title: "Pizza Margherita", description: "Eine klassische Pizza mit Tomaten, Mozzarella und Basilikum.", category: "Pizza", image: "../../assets/Pizza_Margherita.png", diet: {vegetarian: false, gluten_free: false, vegan: false}},
     { id: 1003, title: "Pizza Funghi", description: "Pizza mit Pilzen, Olivenöl und frischem Knoblauch.", category: "Pizza", image: "../../assets/Pizza_Funghi.jpg", diet: {vegetarian: false, gluten_free: false, vegan: false}},
     { id: 1004, title: "Spaghetti Carbonara", description: "Spaghetti mit einer cremigen Eiersauce, Speck und Parmesankäse.", category: "Pasta", image: "../../assets/Spaghetti_Carbonara.png", diet: {vegetarian: false, gluten_free: false, vegan: false} },
