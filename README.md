@@ -6,6 +6,10 @@
 - search component implementieren und in object.js aufrufen
 - search um filter funktionalität erweitern
 - move "charts" to PW-secured space (dummy)
+- bilder auflösung reduzueren
+- getData() um API zu simulieren
+- placeOrder() um API zu simulieren
+
 
 ## should
 - order page implementieren
