@@ -20,7 +20,6 @@ const renderReducedDineData = () => {
   const selectedSearchFilter = getSelectedFilter(searchFilter);
   const searchResults = filterBySearchText(searchText, dineData);
   const filterResults = filterByAttributes(selectedSearchFilter, dineData, allCategories);
-  console.log(filterResults)
   const overlappingResults = searchResults.filter(result => filterResults.includes(result));
   container.render(overlappingResults);
 }
@@ -35,14 +34,16 @@ const getSelectedFilter = (searchFilter) => {
 
 const createListItem = (categoryFilterDiv, category) => {
   const listItem = document.createElement('li');
+  const label = document.createElement('label');
   const checkbox = document.createElement('input');
-  const label = document.createElement('span');
+  const span = document.createElement('span');
   checkbox.name = 'filter-checkbox';
   checkbox.type = 'checkbox';
   checkbox.value = category;
-  label.textContent = category;
-  listItem.appendChild(checkbox);
-  listItem.appendChild(label);
+  span.textContent = category;
+  listItem.appendChild(label)
+  label.appendChild(checkbox);
+  label.appendChild(span);
   categoryFilterDiv.appendChild(listItem);
 }
 
