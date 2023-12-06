@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/test.css">
     <title>Search Objects</title>
+    <link rel="favicon" type="image/x-icon" href="../favicon.ico">
+    <script type="module" src="../js/objects.js"></script>
 </head>
 <body>
     <header>
@@ -27,11 +30,22 @@
     <main class="container">
         <h1>Search Objects</h1>
         <p>Here you can browse and search all the Objects</p>
-        <input type="text" id="search-input" placeholder="Search...">
+        <input type="text" class="searchInput" id="search-input" placeholder="Search...">
+
+        <div id="list1" class="dropdown-check-list" tabindex="100">
+            <span class="anchor">Filter</span>
+            <ul class="items">
+              <li><label><input name="filter-checkbox" type="checkbox" value="vegetarian" />Vegetarian</label></li>
+              <li><label><input name="filter-checkbox" type="checkbox" value="vegan" />Vegan</label></li>
+              <li><label><input name="filter-checkbox" type="checkbox" value="gluten_free" />Gluten free</label></li>
+              <hr />
+              <div id="categoriesFilter"></div>
+            </ul>
+        </div>
+
         <div id="search-results"></div>
         <p>display Objects</p>
         <div id="objectDisplay-Container"></div>
-        <script type="module" src="../js/objects.js"></script>
     </main>
     
     <footer>
@@ -42,6 +56,16 @@
             <p><a href="./impressum.html">Impressum</a></p>
         </div>
     </footer>
+
+    <script>
+        var checkList = document.getElementById('list1');
+        checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+        if (checkList.classList.contains('visible'))
+            checkList.classList.remove('visible');
+        else
+            checkList.classList.add('visible');
+        }
+    </script>   
 </body>
 
 </html>
