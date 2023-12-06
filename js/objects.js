@@ -6,14 +6,21 @@ import { filterBySearchText, filterByAttributes } from './components/objectFilte
 //- * * * * * * * * *
 //- * * Functions * *
 //- * * * * * * * * *
-const renderRawData = () => container.render(dineData);
+const renderRawDineData = () => container.render(dineData);
 
-const renderReducedData = () => {
+const renderFilterCategories = () => {
+  const allCategories = [...new Set(dineData.map(item => item.category))];
+  allCategories.forEach((category) => createListItem(categoryFilterDiv, category));
+}
+
+const renderReducedDineData = () => {
+  const allCategories = [...new Set(dineData.map(item => item.category))];
   const searchText = searchInput.value;
   const searchFilter = searchFilterCheckboxes;
   const selectedSearchFilter = getSelectedFilter(searchFilter);
   const searchResults = filterBySearchText(searchText, dineData);
-  const filterResults = filterByAttributes(selectedSearchFilter, dineData);
+  const filterResults = filterByAttributes(selectedSearchFilter, dineData, allCategories);
+  console.log(filterResults)
   const overlappingResults = searchResults.filter(result => filterResults.includes(result));
   container.render(overlappingResults);
 }
@@ -26,11 +33,25 @@ const getSelectedFilter = (searchFilter) => {
   return selectedSearchFilter;
 }
 
+const createListItem = (categoryFilterDiv, category) => {
+  const listItem = document.createElement('li');
+  const checkbox = document.createElement('input');
+  const label = document.createElement('span');
+  checkbox.name = 'filter-checkbox';
+  checkbox.type = 'checkbox';
+  checkbox.value = category;
+  label.textContent = category;
+  listItem.appendChild(checkbox);
+  listItem.appendChild(label);
+  categoryFilterDiv.appendChild(listItem);
+}
+
 
 //- * * * * * * * * * * * * *
 //- * * Base Declarations * *
 //- * * * * * * * * * * * * *
 const container = new ObjectContainer('objectDisplay-Container');
+const categoryFilterDiv = document.getElementById('categoriesFilter');
 const searchInput = document.getElementById('search-input');
 const searchFilterCheckboxes = document.getElementsByName('filter-checkbox');
 
@@ -38,9 +59,11 @@ const searchFilterCheckboxes = document.getElementsByName('filter-checkbox');
 //- * * * * * * * * * * * *
 //- * * Event Listeners * *
 //- * * * * * * * * * * * *
-window.addEventListener('DOMContentLoaded', renderRawData)
-
-searchInput.addEventListener('input', renderReducedData);
-for (var i = 0, len = searchFilterCheckboxes.length; i < len; i++) {
-  searchFilterCheckboxes[i].addEventListener('change', renderReducedData);
-}
+window.addEventListener('DOMContentLoaded', () => {
+  renderRawDineData();
+  renderFilterCategories();
+  searchInput.addEventListener('input', renderReducedDineData);
+  for (var i = 0, len = searchFilterCheckboxes.length; i < len; i++) {
+    searchFilterCheckboxes[i].addEventListener('change', renderReducedDineData);
+  }
+})
