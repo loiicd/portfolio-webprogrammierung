@@ -10,7 +10,7 @@ const renderRawData = () => container.render(dineData);
 
 const renderReducedData = () => {
   const searchText = searchInput.value;
-  const searchFilter = searchFilterSelect.options;
+  const searchFilter = searchFilterCheckboxes;
   const selectedSearchFilter = getSelectedFilter(searchFilter);
   const searchResults = filterBySearchText(searchText, dineData);
   const filterResults = filterByAttributes(selectedSearchFilter, dineData);
@@ -21,9 +21,9 @@ const renderReducedData = () => {
 const getSelectedFilter = (searchFilter) => {
   let selectedSearchFilter = [];
   for (var i = 0; i < searchFilter.length; i++) {
-    if (searchFilter[i].selected) selectedSearchFilter.push(searchFilter[i].value);
+    if (searchFilter[i].checked) selectedSearchFilter.push(searchFilter[i].value);
   }
-  return selectedSearchFilter
+  return selectedSearchFilter;
 }
 
 
@@ -32,7 +32,7 @@ const getSelectedFilter = (searchFilter) => {
 //- * * * * * * * * * * * * *
 const container = new ObjectContainer('objectDisplay-Container');
 const searchInput = document.getElementById('search-input');
-const searchFilterSelect = document.getElementById('search-filter');
+const searchFilterCheckboxes = document.getElementsByName('filter-checkbox');
 
 
 //- * * * * * * * * * * * *
@@ -41,4 +41,6 @@ const searchFilterSelect = document.getElementById('search-filter');
 window.addEventListener('DOMContentLoaded', renderRawData)
 
 searchInput.addEventListener('input', renderReducedData);
-searchFilterSelect.addEventListener('change', renderReducedData);
+for (var i = 0, len = searchFilterCheckboxes.length; i < len; i++) {
+  searchFilterCheckboxes[i].addEventListener('change', renderReducedData);
+}

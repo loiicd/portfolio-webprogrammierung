@@ -17,7 +17,7 @@ export const filterBySearchText = (searchText, objects) => {
  * @return {array} - array of objects that match the attributes
  */
 export const filterByAttributes = (searchFilter, objects) => {
-  if (searchFilter.includes('none')) return objects;
+  if (searchFilter.length == 0) return objects;
   return objects.filter(object => {
     return (
       (searchFilter.includes('vegetarian') && object.diet.vegetarian) ||
