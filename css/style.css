@@ -264,6 +264,10 @@ button {
   justify-content: center; /* Zentriert den Inhalt horizontal */
   align-items: center; /* Zentriert den Inhalt vertikal */
 }
+.tile-description-button {
+  cursor: pointer;
+  margin-top: -5%;
+}
 
 .favourites-icon {
   position: absolute;
