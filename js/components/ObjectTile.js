@@ -75,6 +75,7 @@ class ObjectTile {
 
     const expandButton = document.createElement('a');
     expandButton.textContent = 'Description ...';
+    expandButton.classList.add('tile-description-button');
     expandButton.href = '##';
     expandButton.addEventListener('click', (event) => {
       event.preventDefault();
