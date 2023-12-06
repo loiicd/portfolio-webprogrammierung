@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/test.css">
-    <title>Search Objects</title>
+    <title>Search Objects</title>x
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <script type="module" src="../js/objects.js"></script>
 </head>
@@ -32,7 +32,7 @@
         <p>Here you can browse and search all the Objects</p>
         <input type="text" class="searchInput" id="search-input" placeholder="Search...">
 
-        <div id="list1" class="dropdown-check-list" tabindex="100">
+        <div id="dropdown1" class="dropdown-check-list" tabindex="100">
             <span class="anchor">Filter</span>
             <ul class="items">
               <li><label><input name="filter-checkbox" type="checkbox" value="vegetarian" />Vegetarian</label></li>
@@ -40,6 +40,15 @@
               <li><label><input name="filter-checkbox" type="checkbox" value="gluten_free" />Gluten free</label></li>
               <hr />
               <div id="categoriesFilter"></div>
+            </ul>
+        </div>
+
+        <div id="dropdown2" class="dropdown-check-list" tabindex="100">
+            <span class="anchor">Sort by</span>
+            <ul class="items">
+              <li><label><input name="sorting-radio" type="radio" value="name" checked/>Name</label></li>
+              <li><label><input name="sorting-radio" type="radio" value="category" />Category</label></li>
+              <li><label><input name="sorting-radio" type="radio" value="price" />Price</label></li>
             </ul>
         </div>
 
@@ -58,12 +67,22 @@
     </footer>
 
     <script>
-        var checkList = document.getElementById('list1');
-        checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
-        if (checkList.classList.contains('visible'))
-            checkList.classList.remove('visible');
-        else
-            checkList.classList.add('visible');
+        var checkList1 = document.getElementById('dropdown1');
+        checkList1.getElementsByClassName('anchor')[0].onclick = function(evt) {
+            if (checkList1.classList.contains('visible')) {
+                checkList1.classList.remove('visible');
+            } else {
+                checkList1.classList.add('visible');
+            }
+        }
+
+        var checkList2 = document.getElementById('dropdown2');
+        checkList2.getElementsByClassName('anchor')[0].onclick = function(evt) {
+            if (checkList2.classList.contains('visible')) {
+                checkList2.classList.remove('visible');
+            } else {
+                checkList2.classList.add('visible');
+            }
         }
     </script>   
 </body>
