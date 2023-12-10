@@ -1,5 +1,8 @@
 # Requirements
 ## ToDo
+### PRIO 1
+- [x] API based search
+
 ### must
 - margin von nav li anpassen, so dass sie nicht hard-codierten abstand haben sondern sich dynamisch über den header verteilen. aktuell wird der header falsch angezeigt
 - search component implementieren und in object.js aufrufen
@@ -27,31 +30,31 @@ object tile optimieren, sodass spacing gleichmässiger ist und bilder überall g
 ## Projekt-Anforderungen
 ### MUST-HAVE-Anforderungen
 
-• Die Web-Anwendung verfügt über eine Homepage und einer weiteren Seite (freie Wahl)
+- ✅ Die Web-Anwendung verfügt über eine Homepage und einer weiteren Seite (freie Wahl)
 
-• In einem Textfeld können Suchbegriffe eingegeben und z.B. durch einen Button kann die
+-  ✅ In einem Textfeld können Suchbegriffe eingegeben und z.B. durch einen Button kann die
 Suche gestartet werden.
 
-• Die Suchergebnisse erscheinen unterhalb der Suche als Tabelle, Bild-Kacheln oder was
+- ✅ Die Suchergebnisse erscheinen unterhalb der Suche als Tabelle, Bild-Kacheln oder was
 eben am besten zu den Daten passt.
 
-• Zu jedem Suchergebnis können durch Anklicken zusätzliche Details angezeigt und wieder
+- ✅ Zu jedem Suchergebnis können durch Anklicken zusätzliche Details angezeigt und wieder
 ausgeblendet werden (z.B. unterhalb des Sucheintrags).
 
 ### NICE-TO-HAVEs
 
-• Es gibt die Möglichkeit Artist zu favorisieren / auf eine Merkliste zu setzten
+- ✅ Es gibt die Möglichkeit Artist zu favorisieren / auf eine Merkliste zu setzten
 
-• Die Merkliste wird lokal im Browser mit localStorage gespeichert.
+- ✅ Die Merkliste wird lokal im Browser mit localStorage gespeichert.
 
-• Die Merkliste wird wahrscheinlich unter dem Menüpunkt „Favoriten“ angezeigt
+- ✅ Die Merkliste wird wahrscheinlich unter dem Menüpunkt „Favoriten“ angezeigt
 
-• Es ist möglich, Einträge aus der Merkliste zu entfernen.
+- ✅ Es ist möglich, Einträge aus der Merkliste zu entfernen.
 
-• Es gibt eine Möglichkeit, die Suche zu filtern (mit Auswahlliste/Dropdown, Checkbox oder
-Radiobutton).
+- ✅ Es gibt eine Möglichkeit, die Suche zu filtern (mit Auswahlliste/Dropdown, Checkbox oder Radiobutton).
 
-• weitere Funktionalitäten in der Webanwendung (z.B. weitere Filter in der Suche oder
-Sortierung der Ergebnisse)
+- ✅ weitere Funktionalitäten in der Webanwendung 
+    - weitere Filter in der Suche 
+    - Sortierung der Ergebnisse)
 
-• Es gibt ein vorgefertigtes Error Screen bei Connection-Problemen o.ä.
+- ✅ Es gibt ein vorgefertigtes **Error Screen** bei Connection-Problemen o.ä.
