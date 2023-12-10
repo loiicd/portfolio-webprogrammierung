@@ -55,4 +55,25 @@ export function removeFromLocalStorage(object, key) {
     window.dispatchEvent(new CustomEvent('localStorageUpdated'));
     console.log('Removed from LocalStorage', key, object);
   }
+
+
+
+
+}
+
+/**
+ * Fügt abgeschlossene Bestellungen zum Local Storage hinzu
+ * @param {array} orders - Die Liste der Bestellungen, die abgeschlossen wurden
+ */
+export function addToCompletedOrders(orders) {
+  const completedOrders = getLocalStorage('completedOrders');
+  // Füge alle neuen Bestellungen zu den abgeschlossenen Bestellungen hinzu
+  completedOrders.push(...orders);
+  localStorage.setItem('completedOrders', JSON.stringify(completedOrders));
+}
+
+
+export function clearOrders() {
+  // Fügen Sie hier Code hinzu, um "orders" zu leeren
+  localStorage.setItem('orders', JSON.stringify([]));
 }
