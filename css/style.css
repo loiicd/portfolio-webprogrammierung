@@ -315,4 +315,21 @@ button {
   margin-bottom: 50px;/* Add margin-bottom to create space between image and footer */
 }
 
+.custom-alert {
+  background-color: #209d50; /* grüner Hintergrund */
+  color: white; /* Weiße Textfarbe */
+  padding: 20px; /* Innenabstand */
+  border-radius: 50px; /* Runde Ecken */
+  position: fixed; /* Fixierte Position */
+  bottom: 20px; /* Abstand vom unteren Rand */
+  left: 50%; /* Zentriert auf der Seite */
+  transform: translateX(-50%); /* Zentrieren des Elements */
+  z-index: 1000; /* Stellen Sie sicher, dass es über anderen Elementen ist */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Schlagschatten für bessere Sichtbarkeit */
+}
+
+/* Verstecken Sie das Alert, wenn es nicht angezeigt wird */
+.hidden {
+  display: none;
+}
 
