@@ -61,19 +61,23 @@ p {
 
 .header a:not(.no-padding) {
   padding: 12px; /* Padding für alle Links außer dem mit der Klasse .no-padding */
+
 }
 
-.header .no-padding {
-  padding: 0; /* Padding für den Link mit der Klasse .no-padding */
+.header a.no-padding {
+  padding: 0; 
+  color: green;
 }
 
+.header a.no-padding:hover {
+  background-color: #333;
+}
 
 
 .header a:not(img):hover {
   background-color: #ddd;
   color: black;
 }
-
 
 .header img{
   height: 45px;
@@ -85,11 +89,9 @@ p {
   color: white;
 }
 
-
 .header-right {
   float: right;
 }
-
 
 @media screen and (max-width: 500px) {
   .header a {
