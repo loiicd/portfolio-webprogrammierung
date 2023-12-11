@@ -1,34 +1,41 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import { getLocalStorage, addToCompletedOrders, clearOrders, addToLocalStorage } from './components/updateLocalStorage.js';
+import { getLocalStorage, addToCompletedOrders, clearOrders, addToLocalStorage, isInLocalStorage } from './components/updateLocalStorage.js';
+
+
+//- * * * * * * * * *
+//- * * Functions * *
+//- * * * * * * * * *
 
 function completeOrder() {
   const orderedItems = getLocalStorage('orders');
-
-  // Überprüfen, ob der Warenkorb leer ist
   if (orderedItems.length === 0) {
     alert('Ihr Warenkorb ist leer. Bitte fügen Sie Artikel hinzu, bevor Sie eine Bestellung aufgeben.');
-    return; // Beendet die Funktion, um zu verhindern, dass eine leere Bestellung abgeschlossen wird
+    return;
   }
 
-  // Fügen Sie die Logik zum Verschieben der Bestellung in den abgeschlossenen Bereich hinzu
   addToCompletedOrders(orderedItems);
+  clearOrders();
+  container.render([]);
 
-  // Leeren Sie den aktuellen Warenkorb
-  clearOrders(); // Verwenden Sie die bereits definierte Funktion zum Leeren der Bestellungen
-  container.render([]); // Leeren Sie den Container
+  if (orders.length === 0 && isInLocalStorage(orderedItems, 'completedOrders')) {
+    alert('Ihre Bestellung wurde abgeschlossen.');
+  } else {
+    alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
+  }
+};
 
-  // Aktualisieren Sie die Anzeige, um zu zeigen, dass der Warenkorb leer ist
-  // ... Code, um die Anzeige zu aktualisieren ...
 
-  // Statt alert('Ihre Bestellung wurde abgeschlossen.');
-showAlert('Ihre Bestellung wurde abgeschlossen.');
-}
-
-let orders = getLocalStorage('orders'); // Verwenden Sie die getLocalStorage-Funktion
-
+//- * * * * * * * * * * * * *
+//- * * Base Declarations * *
+//- * * * * * * * * * * * * *
+let orders = getLocalStorage('orders');
 const container = new ObjectContainer('objectDisplay-Container');
 container.render(orders);
 
+
+//- * * * * * * * * * * * *
+//- * * Event Listeners * *
+//- * * * * * * * * * * * *
 window.addEventListener('localStorageUpdated', () => {
   let orders = getLocalStorage('orders');
   container.render(orders);
