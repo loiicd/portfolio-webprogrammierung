@@ -24,6 +24,39 @@
     </div>
     <main class="container">
         <h1>Welcome to DineInsight Pro</h1>
+        <div>
+            <h2>Abgeschlossene Bestellungen</h2>
+            <div id='show-orders'></div>
+            <script>  
+                const completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
+                const showOrders = document.getElementById('show-orders');
+        
+                completedOrders.forEach((order, index) => {
+                    // Erstellen eines Containers für jede Bestellung
+                    const orderContainer = document.createElement('div');
+                    orderContainer.classList.add('order-container');
+        
+                    // Hinzufügen eines Titels für jede Bestellung
+                    const orderTitle = document.createElement('h3');
+                    orderTitle.textContent = 'Bestellung ' + (index + 1);
+                    orderContainer.appendChild(orderTitle);
+        
+                    // Gehen Sie durch jedes Objekt in der Bestellung
+                    order.forEach(item => {
+                        const itemElement = document.createElement('p');
+                        itemElement.textContent = item.title; // Verwenden des Titels aus dem Bestellungsobjekt
+                        orderContainer.appendChild(itemElement); // Hinzufügen des Elements zum Bestellungscontainer
+                    });
+        
+                    // Hinzufügen des Bestellungscontainers zum Hauptcontainer
+                    showOrders.appendChild(orderContainer);
+                });
+            </script>
+        </div>
+        
+        
+        
+
         <div class="recomendationsContainer">
             <h2>Todays Recomendations</h2>
             <div id="objectDisplay-Container"></div>
