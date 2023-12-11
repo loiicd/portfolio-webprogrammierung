@@ -1,39 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
+<div id="customAlert" class="custom-alert" style="display:none;">
+    <p id="alertMessage"></p>
+</div>
+
 <head>
     <meta charset="UTF-8">
-    <title>Contact Me</title>
+    <title>Favorites</title>
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
+<!-- <script src="../js/favorites.js"></script> -->
 <div class="header">
     <a href="../index.html" class="no-padding"> <img src="../assets/logos/DS_Logo.PNG" alt="DineInsight Logo"></a>
     <div class="header-right">
       <a href="../index.html">Home</a>
         <a href="./objects.html">Objects</a>
         <a href="./favorites.html">Favorites</a>
-        <a href="./order.html">Order</a>
+        <a class="active" href="./order.html">Order</a>
         <a href="./charts.html">Charts</a>
-        <a class="active" href="./contact.html">Contact</a>
+        <a href="./contact.html">Contact</a>
     </div>
   </div>
-
+   
+   
     <main class="container">
-        <h1>Contact Me</h1>
-        <p>Here you can find my contact information.</p>
+        <h2>Orders </h2> 
+        <script type="module" src="../js/order.js"></script>
+        <div id="objectDisplay-Container"></div>
     </main>
-    <a href="./order.html" class="order-button">Bestellungen anzeigen</a>
 
+    <div id="objectDisplay-Container"></div>
+    <button id="placeOrderButton">Bestellung abschicken</button>
+    
     <footer>
         <div class="container">
             <div class="spacer"></div>
             <p>&copy; 2023 Lunchtracker. All rights reserved.</p>
             <p><a href="https://github.com/loiicd/portfolio-webprogrammierung" target="_blank">View in the Github</a></p>
             <p><a href="./impressum.html">Impressum</a></p>
-            
         </div>
     </footer>
+ 
 </body>
 </html>

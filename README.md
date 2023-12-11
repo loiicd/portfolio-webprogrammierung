@@ -1,58 +1,16 @@
-# portfolio-webprogrammierung
+# Portfolio Webprogrammierung
 
-# todo
-## must
-- margin von nav li anpassen, so dass sie nicht hard-codierten abstand haben sondern sich dynamisch über den header verteilen. aktuell wird der header falsch angezeigt
-- search component implementieren und in object.js aufrufen
-- search um filter funktionalität erweitern
-- move "charts" to PW-secured space (dummy)
-- bilder auflösung reduzueren
-- getData() um API zu simulieren
-- placeOrder() um API zu simulieren
+## Docs
 
+[Requirements](docs/requirements.md)
 
-## should
-- order page implementieren
-- error handling implementieren
-object tile optimieren, sodass spacing gleichmässiger ist und bilder überall gleich gross
-
-## want
-- deploy to github pages 
-    - dafür müssen alle Links gecheckt werden
-    - index.html in root folder verschoben
-    - zusätzliche devl branch eingerichtet werden
-- oder direkt auf loics strato webspace deployen
+## Collaborators
 
 
 
-## Projekt-Anforderungen
-### MUST-HAVE-Anforderungen
-
-• Die Web-Anwendung verfügt über eine Homepage und einer weiteren Seite (freie Wahl)
-
-• In einem Textfeld können Suchbegriffe eingegeben und z.B. durch einen Button kann die
-Suche gestartet werden.
-
-• Die Suchergebnisse erscheinen unterhalb der Suche als Tabelle, Bild-Kacheln oder was
-eben am besten zu den Daten passt.
-
-• Zu jedem Suchergebnis können durch Anklicken zusätzliche Details angezeigt und wieder
-ausgeblendet werden (z.B. unterhalb des Sucheintrags).
-
-### NICE-TO-HAVEs
-
-• Es gibt die Möglichkeit Artist zu favorisieren / auf eine Merkliste zu setzten
-
-• Die Merkliste wird lokal im Browser mit localStorage gespeichert.
-
-• Die Merkliste wird wahrscheinlich unter dem Menüpunkt „Favoriten“ angezeigt
-
-• Es ist möglich, Einträge aus der Merkliste zu entfernen.
-
-• Es gibt eine Möglichkeit, die Suche zu filtern (mit Auswahlliste/Dropdown, Checkbox oder
-Radiobutton).
-
-• weitere Funktionalitäten in der Webanwendung (z.B. weitere Filter in der Suche oder
-Sortierung der Ergebnisse)
-
-• Es gibt ein vorgefertigtes Error Screen bei Connection-Problemen o.ä.
+Name | Picture | Contact
+--- | --- | ---
+Jacob Ruhnau | <img src="https://media.licdn.com/dms/image/C4E03AQG4_9Vn9wAJgg/profile-displayphoto-shrink_200_200/0/1660381107863?e=2147483647&v=beta&t=9Y48WL6GS6484STUYx57NeFYNkZV4QAvpJmyiSYJ1tA" height="100"> | ruhnauja@dhbw-loerrach.de
+Moritz Höft | <img src="https://uploads.metropoles.com/wp-content/uploads/2023/06/07120335/ator-porno-johnny-sins.jpg" height="100"> | hoefmo@dhbw-loerrach.de
+Simon Bühler | <img src="https://media.licdn.com/dms/image/D4E03AQEhmspxtXKe_w/profile-displayphoto-shrink_400_400/0/1689342429711?e=2147483647&v=beta&t=SdB4c_pmoo869Vz7qirYX5k4gw6DnU3SLPz6-Bs6a48" height="100"> | buehlsim@dhbw-loerrach.de
+Loïc Dörr | <img src="https://i.pinimg.com/736x/6b/f3/1c/6bf31c75dd278e69e4f5a15a54426853.jpg" height="100"> | doerrl@dhbw-loerrach.de

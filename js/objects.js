@@ -6,7 +6,11 @@ import { filterBySearchText, filterByAttributes } from './components/objectFilte
 //- * * * * * * * * *
 //- * * Functions * *
 //- * * * * * * * * *
-const renderRawDineData = () => container.render(dineData);
+const renderRawDineData = () => {
+  const sortingType = getCheckedRadioValue(sortingRadio);
+  const sortedDineData = sortDineData(dineData, sortingType);
+  container.render(sortedDineData);
+}
 
 const renderFilterCategories = () => {
   const allCategories = [...new Set(dineData.map(item => item.category))];
@@ -21,7 +25,9 @@ const renderReducedDineData = () => {
   const searchResults = filterBySearchText(searchText, dineData);
   const filterResults = filterByAttributes(selectedSearchFilter, dineData, allCategories);
   const overlappingResults = searchResults.filter(result => filterResults.includes(result));
-  container.render(overlappingResults);
+  const sortingType = getCheckedRadioValue(sortingRadio);
+  const sortedDineData = sortDineData(overlappingResults, sortingType);
+  container.render(sortedDineData);
 }
 
 const getSelectedFilter = (searchFilter) => {
@@ -47,6 +53,27 @@ const createListItem = (categoryFilterDiv, category) => {
   categoryFilterDiv.appendChild(listItem);
 }
 
+const getCheckedRadioValue = (sortingRadio) => {
+  let checkedValue;
+  for (const radio of sortingRadio) {
+    if (radio.checked) {
+      checkedValue = radio.value;
+      break;
+    }
+  }
+  return checkedValue;
+}
+
+const sortDineData = (dineData, type) => {
+  switch (type) {
+    case 'name':
+      return dineData.sort((a, b) => a.title.localeCompare(b.title));
+    case 'category':
+      return dineData.sort((a, b) => a.category.localeCompare(b.category));
+    case 'price':
+      return dineData.sort((a, b) => a.price -b.price);
+  }
+}
 
 //- * * * * * * * * * * * * *
 //- * * Base Declarations * *
@@ -55,6 +82,7 @@ const container = new ObjectContainer('objectDisplay-Container');
 const categoryFilterDiv = document.getElementById('categoriesFilter');
 const searchInput = document.getElementById('search-input');
 const searchFilterCheckboxes = document.getElementsByName('filter-checkbox');
+const sortingRadio = document.getElementsByName('sorting-radio');
 
 
 //- * * * * * * * * * * * *
@@ -66,5 +94,8 @@ window.addEventListener('DOMContentLoaded', () => {
   searchInput.addEventListener('input', renderReducedDineData);
   for (var i = 0, len = searchFilterCheckboxes.length; i < len; i++) {
     searchFilterCheckboxes[i].addEventListener('change', renderReducedDineData);
+  }
+  for (var i = 0, len = sortingRadio.length; i < len; i++) {
+    sortingRadio[i].addEventListener('change', renderRawDineData);
   }
 })
