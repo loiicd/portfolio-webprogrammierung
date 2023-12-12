@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API SEARCH</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/test.css">
     <script type='text/javascript'>
         window.smartlook||(function(d) {
             var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
@@ -30,10 +31,28 @@
     <div class="container">
         <h1>API SEARCH</h1>
         <input type="text" id="searchInput">
+        <div id="dropdown1" class="dropdown-check-list" tabindex="100">
+            <span class="anchor">Diet Filter</span>
+            <ul class="items">
+              <li><label><input name="dietFilter" type="checkbox" value="vegetarian" />Vegetarian</label></li>
+              <li><label><input name="dietFilter" type="checkbox" value="vegan" />Vegan</label></li>
+              <li><label><input name="dietFilter" type="checkbox" value="ketogenic" />Ketogenic</label></li>
+            </ul>
+        </div>
         <button id="searchButton">Search</button>
         <div id="searchResults"></div>
         <div id="objectDisplay-Container"></div>
     </div>
     <script type="module" src="../js/apiSearch.js"></script>
+    <script>
+      var checkList1 = document.getElementById('dropdown1');
+      checkList1.getElementsByClassName('anchor')[0].onclick = function(evt) {
+          if (checkList1.classList.contains('visible')) {
+              checkList1.classList.remove('visible');
+          } else {
+              checkList1.classList.add('visible');
+          }
+      }
+  </script>   
 </body>
 </html>
