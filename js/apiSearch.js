@@ -22,7 +22,7 @@ function searchAPI(searchValue) {
 
         Promise.all(promises)
         .then(objectContainers => {
-            const container = new ObjectContainer('searchResults');
+            const container = new ObjectContainer('objectDisplay-Container');
             container.render(objectContainers);
         })
         .catch(error => {
@@ -50,5 +50,4 @@ const searchURL = 'https://api.spoonacular.com/recipes/complexSearch?query=';
 searchButton.addEventListener('click', () => {
     const searchValue = searchInput.value;
     searchAPI(searchValue);
-    
 });
