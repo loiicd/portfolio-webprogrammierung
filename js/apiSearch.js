@@ -1,4 +1,5 @@
 import { ObjectContainer } from './components/ObjectTile.js';
+import getSelectedFilter from './utils/getSelectedFilter.js';
 
 //- * * * * * * * * *
 //- * * Functions * *
@@ -35,14 +36,6 @@ function searchAPI(searchValue, dietFilters) {
         console.error('Error:', error);
     });
 }
-
-const getSelectedFilter = (searchFilter) => {
-    let selectedSearchFilter = [];
-    for (var i = 0; i < searchFilter.length; i++) {
-      if (searchFilter[i].checked) selectedSearchFilter.push(searchFilter[i].value);
-    }
-    return selectedSearchFilter;
-  }
 
 
 //- * * * * * * * * * * * * *

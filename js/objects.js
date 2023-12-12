@@ -1,6 +1,7 @@
 import { ObjectContainer } from './components/ObjectTile.js';
 import { dineData } from './components/objectData.js';
 import { filterBySearchText, filterByAttributes } from './components/objectFilters.js';
+import getSelectedFilter from './utils/getSelectedFilter.js';
 
 
 //- * * * * * * * * *
@@ -28,14 +29,6 @@ const renderReducedDineData = () => {
   const sortingType = getCheckedRadioValue(sortingRadio);
   const sortedDineData = sortDineData(overlappingResults, sortingType);
   container.render(sortedDineData);
-}
-
-const getSelectedFilter = (searchFilter) => {
-  let selectedSearchFilter = [];
-  for (var i = 0; i < searchFilter.length; i++) {
-    if (searchFilter[i].checked) selectedSearchFilter.push(searchFilter[i].value);
-  }
-  return selectedSearchFilter;
 }
 
 const createListItem = (categoryFilterDiv, category) => {
