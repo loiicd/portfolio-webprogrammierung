@@ -9,9 +9,11 @@ import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, cle
 function completeOrder() {
   console.log('Complete Order Ausgeführt')
   const orderedItems = getLocalStorage('orders');
+
+  // Überprüfen, ob der Warenkorb leer ist
   if (orderedItems.length === 0) {
     alert('Ihr Warenkorb ist leer. Bitte fügen Sie Artikel hinzu, bevor Sie eine Bestellung aufgeben.');
-    return;
+    return; // Beendet die Funktion, um zu verhindern, dass eine leere Bestellung abgeschlossen wird
   }
   const orderId = Date.now()
 
@@ -32,7 +34,6 @@ function completeOrder() {
   }
 };
 
-
 //- * * * * * * * * * * * * *
 //- * * Base Declarations * *
 //- * * * * * * * * * * * * *
@@ -41,10 +42,6 @@ const placeOrderButton = document.getElementById('placeOrderButton')
 const container = new ObjectContainer('objectDisplay-Container');
 container.render(orders);
 
-
-//- * * * * * * * * * * * *
-//- * * Event Listeners * *
-//- * * * * * * * * * * * *
 window.addEventListener('localStorageUpdated', () => {
   let orders = getLocalStorage('orders');
   container.render(orders);
