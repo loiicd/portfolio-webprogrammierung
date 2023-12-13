@@ -193,8 +193,10 @@ footer .container {
 input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    width: 218px;
+    padding-right: 30;
 }
 
 button {
