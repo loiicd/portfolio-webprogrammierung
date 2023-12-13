@@ -1,4 +1,4 @@
-from PIL import Image, ImageFile, UnidentifiedImageError
+from PIL import Image, UnidentifiedImageError
 import os
 
 def compress_images(source_dir, target_dir, max_size=(500, 300)):
@@ -23,5 +23,4 @@ def compress_images(source_dir, target_dir, max_size=(500, 300)):
                 print(f"Die Datei {image_path} konnte nicht geöffnet werden. Überprüfen Sie das Format und die Integrität der Datei.")
                 print(e)
 
-# Verwenden Sie die Funktion
-compress_images('./assets', './assets/compressed')
+compress_images('/Users/jacob/data/dhbw/22_3-portfolio-web_engeneering/assets/data-img', './compressed')
