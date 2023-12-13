@@ -39,27 +39,62 @@
             <script>  
                 const completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
                 const showOrders = document.getElementById('show-orders');
-        
-                completedOrders.forEach((order, index) => {
-                    // Erstellen eines Containers für jede Bestellung
+
+                const allOrderIds = completedOrders.map(order => order.orderId);
+                console.log(allOrderIds)
+
+
+                allOrderIds.map((orderID, index) => {
                     const orderContainer = document.createElement('div');
                     orderContainer.classList.add('order-container');
-        
-                    // Hinzufügen eines Titels für jede Bestellung
+
+                    const date = new Date(orderID)
+
+                    const year = date.getFullYear();
+                    const month = date.getMonth() + 1; // Months are zero-indexed, so we add 1
+                    const day = date.getDate();
+                    const hours = date.getHours();
+                    const minutes = date.getMinutes();
+
+                    const orderNumber = index + 1
+
                     const orderTitle = document.createElement('h3');
-                    orderTitle.textContent = 'Bestellung ' + (index + 1);
+                    orderTitle.textContent = 'Bestellung ' + orderNumber  + ' | ' + `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
                     orderContainer.appendChild(orderTitle);
-        
-                    // Gehen Sie durch jedes Objekt in der Bestellung
-                    order.forEach(item => {
-                        const itemElement = document.createElement('p');
-                        itemElement.textContent = item.title; // Verwenden des Titels aus dem Bestellungsobjekt
-                        orderContainer.appendChild(itemElement); // Hinzufügen des Elements zum Bestellungscontainer
-                    });
-        
-                    // Hinzufügen des Bestellungscontainers zum Hauptcontainer
+
+                    completedOrders.map((item) => {
+                        if (item.orderId == orderID) {
+                            const itemElement = document.createElement('p');
+                            itemElement.textContent = item.title;
+                            orderContainer.appendChild(itemElement); 
+                        }
+                    })
+
                     showOrders.appendChild(orderContainer);
-                });
+                })
+        
+                // completedOrders.forEach((order, index) => {
+                //     // Erstellen eines Containers für jede Bestellung
+                //     const orderContainer = document.createElement('div');
+                //     orderContainer.classList.add('order-container');
+
+                    
+        
+                //     // Hinzufügen eines Titels für jede Bestellung
+                //     const orderTitle = document.createElement('h3');
+                //     orderTitle.textContent = 'Bestellung ' + (index + 1);
+                //     orderContainer.appendChild(orderTitle);
+        
+                //     // Gehen Sie durch jedes Objekt in der Bestellung
+                //     // order.forEach(item => {
+                //         const itemElement = document.createElement('p');
+                //         itemElement.textContent = order.title + ' ' + order.orderId; // Verwenden des Titels aus dem Bestellungsobjekt
+                //         orderContainer.appendChild(itemElement); // Hinzufügen des Elements zum Bestellungscontainer
+                //     // });
+        
+                //     // Hinzufügen des Bestellungscontainers zum Hauptcontainer
+                //     showOrders.appendChild(orderContainer);
+                // });
             </script>
         </div>
         

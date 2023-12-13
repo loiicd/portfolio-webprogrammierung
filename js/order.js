@@ -1,5 +1,5 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import { getLocalStorage, addToCompletedOrders, clearOrders, addToLocalStorage, isInLocalStorage } from './components/updateLocalStorage.js';
+import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, clearOrders, addToLocalStorage, isInLocalStorage } from './components/updateLocalStorage.js';
 
 
 //- * * * * * * * * *
@@ -7,20 +7,28 @@ import { getLocalStorage, addToCompletedOrders, clearOrders, addToLocalStorage, 
 //- * * * * * * * * *
 
 function completeOrder() {
+  console.log('Complete Order Ausgeführt')
   const orderedItems = getLocalStorage('orders');
   if (orderedItems.length === 0) {
     alert('Ihr Warenkorb ist leer. Bitte fügen Sie Artikel hinzu, bevor Sie eine Bestellung aufgeben.');
     return;
   }
+  const orderId = Date.now()
 
-  addToCompletedOrders(orderedItems);
+  addToCompletedOrders(orderedItems, orderId);
   clearOrders();
   container.render([]);
 
-  if (orders.length === 0 && isInLocalStorage(orderedItems, 'completedOrders')) {
+  const if1 = getLocalStorage('orders').length
+  const if2 = orderObjectIsInLocalStorage(orderedItems, 'completedOrders', orderId)
+
+  console.log('If1:', if1)
+  console.log('If2:', if2)
+
+  if (if1 === 0 && if2) {
     alert('Ihre Bestellung wurde abgeschlossen.');
   } else {
-    alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
+    console.error('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
   }
 };
 
@@ -29,6 +37,7 @@ function completeOrder() {
 //- * * Base Declarations * *
 //- * * * * * * * * * * * * *
 let orders = getLocalStorage('orders');
+const placeOrderButton = document.getElementById('placeOrderButton')
 const container = new ObjectContainer('objectDisplay-Container');
 container.render(orders);
 
@@ -41,7 +50,7 @@ window.addEventListener('localStorageUpdated', () => {
   container.render(orders);
 }); 
 
-document.getElementById('placeOrderButton').addEventListener('click', () => {
+placeOrderButton.addEventListener('click', () => {
   completeOrder();
 });
 

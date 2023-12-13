@@ -26,6 +26,13 @@ export function isInLocalStorage(object, key) {
     return storedObjects.some(favorite => favorite.id === object.id);
 }
 
+
+export function orderObjectIsInLocalStorage(objects, key, orderId) {
+  const storedObjects = getLocalStorage(key);
+  return objects.some((object) => storedObjects.some((item) => item.id === object.id && item.orderId === orderId));
+}
+
+
 /**
  * @description Adds an object to LocalStorage
  * @param {object} object - The object to add
@@ -65,10 +72,16 @@ export function removeFromLocalStorage(object, key) {
  * Fügt abgeschlossene Bestellungen zum Local Storage hinzu
  * @param {array} orders - Die Liste der Bestellungen, die abgeschlossen wurden
  */
-export function addToCompletedOrders(orders) {
+export function addToCompletedOrders(orders, orderId) {
   const completedOrders = getLocalStorage('completedOrders');
+  console.log('Completed Orders:', completedOrders)
   // Füge alle neuen Bestellungen zu den abgeschlossenen Bestellungen hinzu
+
+  orders.map((order) => order.orderId = orderId)
+
   completedOrders.push(...orders);
+  console.log('Orders:', orders)
+
   localStorage.setItem('completedOrders', JSON.stringify(completedOrders));
 }
 
