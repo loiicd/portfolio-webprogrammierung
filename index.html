@@ -34,13 +34,14 @@
     <main class="container">
         <h1>Welcome to DineInsight Pro</h1>
         <div>
-            <h2>Abgeschlossene Bestellungen</h2>
+            <h2>Completed Orders</h2>
             <div id='show-orders'></div>
             <script>  
                 const completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
                 const showOrders = document.getElementById('show-orders');
 
-                const allOrderIds = completedOrders.map(order => order.orderId);
+                const allOrderIdsSet = new Set(completedOrders.map(order => order.orderId));
+                const allOrderIds = Array.from(allOrderIdsSet);
 
                 allOrderIds.map((orderID, index) => {
                     const orderContainer = document.createElement('div');
@@ -57,12 +58,11 @@
                     const orderNumber = index + 1
 
                     const orderTitle = document.createElement('h3');
-                    orderTitle.textContent = 'Bestellung ' + orderNumber  + ' vom ' + `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+                    orderTitle.textContent = 'Order ' + orderNumber  + ' from ' + `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
                     orderContainer.appendChild(orderTitle);
 
                     let totalPrice = 0
                     completedOrders.map((item, newIndex) => {
-                        console.log(item)
                         if (item.orderId == orderID) {
                             const itemElement = document.createElement('p');
                             itemElement.textContent = `- ${item.title} ${item.price}$`;
@@ -77,29 +77,17 @@
 
                     showOrders.appendChild(orderContainer);
                 })
-        
-                // completedOrders.forEach((order, index) => {
-                //     // Erstellen eines Containers für jede Bestellung
-                //     const orderContainer = document.createElement('div');
-                //     orderContainer.classList.add('order-container');
 
-                    
-        
-                //     // Hinzufügen eines Titels für jede Bestellung
-                //     const orderTitle = document.createElement('h3');
-                //     orderTitle.textContent = 'Bestellung ' + (index + 1);
-                //     orderContainer.appendChild(orderTitle);
-        
-                //     // Gehen Sie durch jedes Objekt in der Bestellung
-                //     // order.forEach(item => {
-                //         const itemElement = document.createElement('p');
-                //         itemElement.textContent = order.title + ' ' + order.orderId; // Verwenden des Titels aus dem Bestellungsobjekt
-                //         orderContainer.appendChild(itemElement); // Hinzufügen des Elements zum Bestellungscontainer
-                //     // });
-        
-                //     // Hinzufügen des Bestellungscontainers zum Hauptcontainer
-                //     showOrders.appendChild(orderContainer);
-                // });
+                if (completedOrders.length != 0) {
+                    const button = document.createElement('button');
+                    button.textContent = 'Delete Order History';
+                    button.id = 'deleteHistoryButton';
+                    showOrders.appendChild(button);
+                } else {
+                    const itemElement = document.createElement('p');
+                    itemElement.textContent = 'No Order History found!';
+                    showOrders.appendChild(itemElement);
+                }
             </script>
         </div>
         
