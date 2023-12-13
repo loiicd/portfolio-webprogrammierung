@@ -47,5 +47,8 @@
 }
 
 .dropdown-check-list.visible .items {
+  background-color: white;
   display: block;
+  position: absolute;
+  z-index: 1001; 
 }

@@ -1,10 +1,13 @@
 import { ObjectContainer } from './components/ObjectTile.js';
+import getSelectedFilter from './utils/getSelectedFilter.js';
 
 //- * * * * * * * * *
 //- * * Functions * *
 //- * * * * * * * * *
-function searchAPI(searchValue) {
-    const url = `${searchURL}${searchValue}&apiKey=${API_KEY}`;
+function searchAPI(searchValue, dietFilters) {
+    const selectedDietFilters = getSelectedFilter(dietFilters)
+    console.log('Selected Filters', selectedDietFilters)
+    const url = `${searchURL}${searchValue}&diet=${selectedDietFilters}&apiKey=${API_KEY}`;
     fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -22,7 +25,7 @@ function searchAPI(searchValue) {
 
         Promise.all(promises)
         .then(objectContainers => {
-            const container = new ObjectContainer('searchResults');
+            const container = new ObjectContainer('objectDisplay-Container');
             container.render(objectContainers);
         })
         .catch(error => {
@@ -40,6 +43,7 @@ function searchAPI(searchValue) {
 //- * * * * * * * * * * * * *
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
+const dietFilters = document.getElementsByName('dietFilter');
 const API_KEY = '3121448146724bd4a9b9d9a513f8583a';
 const searchURL = 'https://api.spoonacular.com/recipes/complexSearch?query=';
 
@@ -49,6 +53,5 @@ const searchURL = 'https://api.spoonacular.com/recipes/complexSearch?query=';
 //- * * * * * * * * * * * *
 searchButton.addEventListener('click', () => {
     const searchValue = searchInput.value;
-    searchAPI(searchValue);
-    
+    searchAPI(searchValue, dietFilters);
 });
