@@ -41,8 +41,6 @@
                 const showOrders = document.getElementById('show-orders');
 
                 const allOrderIds = completedOrders.map(order => order.orderId);
-                console.log(allOrderIds)
-
 
                 allOrderIds.map((orderID, index) => {
                     const orderContainer = document.createElement('div');
@@ -59,16 +57,23 @@
                     const orderNumber = index + 1
 
                     const orderTitle = document.createElement('h3');
-                    orderTitle.textContent = 'Bestellung ' + orderNumber  + ' | ' + `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+                    orderTitle.textContent = 'Bestellung ' + orderNumber  + ' vom ' + `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
                     orderContainer.appendChild(orderTitle);
 
-                    completedOrders.map((item) => {
+                    let totalPrice = 0
+                    completedOrders.map((item, newIndex) => {
+                        console.log(item)
                         if (item.orderId == orderID) {
                             const itemElement = document.createElement('p');
-                            itemElement.textContent = item.title;
+                            itemElement.textContent = `- ${item.title} ${item.price}$`;
                             orderContainer.appendChild(itemElement); 
+                            totalPrice = totalPrice + item.price
                         }
                     })
+
+                    const itemElement = document.createElement('p');
+                    itemElement.textContent = `Total ${totalPrice}$`;
+                    orderContainer.appendChild(itemElement); 
 
                     showOrders.appendChild(orderContainer);
                 })

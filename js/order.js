@@ -1,5 +1,5 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, clearOrders, addToLocalStorage, isInLocalStorage } from './components/updateLocalStorage.js';
+import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, clearOrders} from './components/updateLocalStorage.js';
 
 
 //- * * * * * * * * *
@@ -7,7 +7,6 @@ import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, cle
 //- * * * * * * * * *
 
 function completeOrder() {
-  console.log('Complete Order Ausgeführt')
   const orderedItems = getLocalStorage('orders');
 
   // Überprüfen, ob der Warenkorb leer ist
@@ -21,16 +20,10 @@ function completeOrder() {
   clearOrders();
   container.render([]);
 
-  const if1 = getLocalStorage('orders').length
-  const if2 = orderObjectIsInLocalStorage(orderedItems, 'completedOrders', orderId)
-
-  console.log('If1:', if1)
-  console.log('If2:', if2)
-
-  if (if1 === 0 && if2) {
+  if (getLocalStorage('orders').length === 0 && orderObjectIsInLocalStorage(orderedItems, 'completedOrders', orderId)) {
     alert('Ihre Bestellung wurde abgeschlossen.');
   } else {
-    console.error('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
+    alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
   }
 };
 
