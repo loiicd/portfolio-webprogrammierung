@@ -35,7 +35,7 @@ body {
 }
 
 a {
-  color: #0077cc;
+  color: #240e01;
   text-decoration: none;
 }
 
@@ -53,16 +53,12 @@ p {
 }
 
 .container {
+  width: 100%;
   max-width: 1024px;
-
-  margin-top: 20;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
-
-
-
-
 
 .header {
   min-height: 50px;
@@ -220,10 +216,21 @@ input[type="text"] {
 }
 
 button {
+  background-color: #f7a803;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.button {
     background-color: #f7a803;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 100px;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
@@ -307,7 +314,7 @@ button {
   flex-direction: column;
   align-items: center;
   width: 240px;
-  height: 340px;
+  height: 280px;
   /* transition: transform 0.2s ease-in-out; */
 }
 
@@ -332,7 +339,7 @@ button {
 }
 
 .object-tile button:hover {
-  background-color: #005999;
+  background-color: #ab0100;
 }
 
 .object-tile p {
@@ -445,6 +452,45 @@ button {
   transform: scale(1.08);
 }
 
+.m-0 {
+  margin: 0rem;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
+.m-3 {
+  margin: 0.75rem;
+}
+
+.m-4 {
+  margin: 1rem;
+}
+
+.m-5 {
+  margin: 1.25rem;
+}
+
+.m-6 {
+  margin: 1.50rem;
+}
+
+.m-7 {
+  margin: 1.75rem;
+}
+
+.m-8 {
+  margin: 2rem;
+}
+
+.mt-0 {
+  margin-top: 0rem;
+}
 
 .mt-1 {
   margin-top: 0.25rem;
@@ -462,8 +508,80 @@ button {
   margin-top: 1rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.mt-6 {
+  margin-top: 1.50rem;
+}
+
+.mt-7 {
+  margin-top: 1.75rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.mb-0 {
+  margin-bottom: 0rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.50rem;
+}
+
+.mb-7 {
+  margin-bottom: 1.75rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.header-1 {
+  font-size: 56px;
+  font-weight: 600;
+  text-align: center;
+}
+
 .header-2 {
   font-size: 48px;
   font-weight: 600;
   text-align: center;
+}
+
+.header-3 {
+  font-size: 28px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.test {
+  align-self: center;
 }
