@@ -26,11 +26,8 @@
             <a href="html/charts.html">Charts</a>
             <a href="html/contact.html">Contact</a>
         </div>
-      </div>
-
-    <div class="headerExpand" id="searchResults">
-        <div class="container"></div>
     </div>
+
     <main class="container">
         <h1>Welcome to DineInsight Pro</h1>
         <div>
@@ -49,7 +46,7 @@
                 allOrderIds.map((orderID, index) => {
 
                     const itemContainer = document.createElement('div');
-                    itemContainer.classList.add('orderHistoryCard');
+                    itemContainer.classList.add('card');
 
                     const date = new Date(orderID);
 
@@ -96,12 +93,13 @@
                 }
             </script>
         </div>
-        
-        
-        
+
+        <div class="card mt-4">
+
+        </div>
 
         <div class="recomendationsContainer">
-            <h2>Todays Recomendations</h2>
+            <h2 class="header-2">Todays Recomendations</h2>
             <div id="objectDisplay-Container"></div>
         </div>
     </main>

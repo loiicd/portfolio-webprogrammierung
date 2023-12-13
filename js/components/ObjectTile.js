@@ -33,6 +33,8 @@ class ObjectTile {
   createElement() {
     const objectTile = document.createElement('div');
     objectTile.classList.add('object-tile');
+    objectTile.classList.add('card');
+    objectTile.classList.add('hover');
 
     const tileHeader = document.createElement('div');
     tileHeader.classList.add('tile-header');
