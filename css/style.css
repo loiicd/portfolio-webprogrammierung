@@ -65,6 +65,7 @@ p {
 
 
 .header {
+  min-height: 50px;
   overflow: hidden;
   background-color: #333;
   padding: 10px 10px;
