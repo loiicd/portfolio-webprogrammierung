@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageFile, UnidentifiedImageError
 import os
 
 def compress_images(source_dir, target_dir, max_size=(500, 300)):
@@ -8,19 +8,20 @@ def compress_images(source_dir, target_dir, max_size=(500, 300)):
     for file in files:
         if file.endswith('.jpg') or file.endswith('.png'):
             image_path = os.path.join(source_dir, file)
-            img = Image.open(image_path)
-            img.thumbnail(max_size, Image.ANTIALIAS)
-            # Zentrieren Sie das Bild im Zielbereich
-            width, height = img.size
-            x = (max_size[0] - width) // 2
-            y = (max_size[1] - height) // 2
-            # Erstellen Sie ein neues Bild mit Transparenz (Alpha-Kanal)
-            new_img = Image.new('RGBA', max_size)
-            new_img.paste(img, (x, y))
-            # Speichern Sie das Bild im Zielverzeichnis
-            target_path = os.path.join(target_dir, file)
-            # Speichern Sie das Bild im PNG-Format, um die Transparenz zu erhalten
-            new_img.save(target_path, "PNG")
+            try:
+                img = Image.open(image_path)
+                img.thumbnail(max_size, Image.LANCZOS)
+                width, height = img.size
+                x = (max_size[0] - width) // 2
+                y = (max_size[1] - height) // 2
+                new_img = Image.new('RGBA', max_size)
+                new_img.paste(img, (x, y))
+                target_path = os.path.join(target_dir, file)
+                new_img.save(target_path, "PNG")
+                print("success", image_path)
+            except (UnidentifiedImageError, OSError) as e:
+                print(f"Die Datei {image_path} konnte nicht geöffnet werden. Überprüfen Sie das Format und die Integrität der Datei.")
+                print(e)
 
 # Verwenden Sie die Funktion
 compress_images('./assets', './assets/compressed')
