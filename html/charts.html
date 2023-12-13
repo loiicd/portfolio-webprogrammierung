@@ -16,11 +16,6 @@
         </script>
     </head>
     <body>
-        
-        <div class="headerExpand" id="searchResults">
-                <div class="container"></div>
-        </div>
-
         <div class="header">
             <a href="../index.html" class="no-padding"> <img src="../assets/logos/DS_Logo.PNG" alt="DineInsight Logo"></a>
             <div class="header-right">
@@ -33,11 +28,20 @@
             </div>
           </div>
 
-        <main class="container">
-                <h1>Charts</h1>
-                
-        <div id="chart" style="width:1300px;height:800px;"></div>
-        <div id="pie-chart" style="width:1300px;height:800px;"></div>
+        <main>
+            <section>
+                <div class="container">
+                    <h2 class="header-2">Charts</h2>
+                </div>
+            </section>
+
+            <section>
+                <div>
+                    <div id="chart" style="width:1300px;height:800px;"></div>
+                    <div id="pie-chart" style="width:1300px;height:800px;"></div>
+                </div>
+            </section>
+
         <script>
                 // Dummy-Daten für Bestellungen der letzten 4 Wochen
                 const dummyData = [
@@ -106,12 +110,8 @@
             Plotly.newPlot('pie-chart', pieData, pieLayout);
         </script>
         
-
-</main>
+    </main>
     
-
-   
-
     <footer>
         <div class="container">
             <div class="spacer"></div>
