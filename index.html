@@ -20,100 +20,121 @@
     <div class="header">
         <a href="index.html" class="no-padding"> <img src="../assets/logos/DS_Logo.PNG" alt="DineInsight Logo"></a>
         <div class="header-right">
-          <a class="active" href="index.html">Home</a>
+            <a class="active" href="index.html">Home</a>
             <a href="html/objects.html">Objects</a>
             <a href="html/favorites.html">Favorites</a>
             <a href="html/order.html">Order</a>
             <a href="html/charts.html">Charts</a>
             <a href="html/contact.html">Contact</a>
         </div>
-      </div>
+    </div>
 
-      <div>
-        <div class="hero-image">
-            <div class="hero-text">
-                <h1>DineInsight</h1>
-                <h2>DATADRIVEN CANTEEN FORECAST SYSTEM!</h2>
+    <main>
+        <section>
+            <div class="hero-image">
+                <div class="hero-text">
+                    <h1 class="header-1">DineInsight</h1>
+                    <h2 class="header-2">DATADRIVEN CANTEEN FORECAST SYSTEM!</h2>
+                </div>
             </div>
+        </section>
+
+        <section>
+            <div class="container mt-8 mb-8">
+                <h2 class="header-2 mb-0">Reshaping with DineInsight's innovative and sustainable solutions</h2>
+                <h2 class="mt-0 header-3">Innovative solutions to reduce food waste and enhance efficiency for cafeterias and business restaurants</h2>
+                <div class="text-center">
+                    <a href="html/objects.html" class="button">Learn more</a>
+                </div>
             </div>
-        </div>
+        </section>
 
-    <main class="container">
-        <h1>Welcome to DineInsight Pro</h1>
-        <div>
-            <h2>Completed Orders</h2>
-            <div id='show-orders'></div>
-            <script>  
-                const completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
-                const showOrders = document.getElementById('show-orders');
+        <section>
+            <div class="hero-image"></div>
+        </section>
 
-                const allOrderIdsSet = new Set(completedOrders.map(order => order.orderId));
-                const allOrderIds = Array.from(allOrderIdsSet);
+        <section>
+            <div class="container mt-8 mb-8">
+                <div class="recomendationsContainer">
+                    <h2 class="header-2">Todays Recomendations</h2>
+                    <div id="objectDisplay-Container"></div>
+                </div>
+            </div>
+        </section>
 
-                const orderContainer = document.createElement('div');
-                orderContainer.classList.add('order-container');
+        <section>
+            <div class="container">
+                <h2 class="header-2">Completed Orders</h2>
+                <div id='show-orders'></div>
+                <script>  
+                    const completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
+                    const showOrders = document.getElementById('show-orders');
 
-                allOrderIds.map((orderID, index) => {
+                    const allOrderIdsSet = new Set(completedOrders.map(order => order.orderId));
+                    const allOrderIds = Array.from(allOrderIdsSet);
 
-                    const itemContainer = document.createElement('div');
-                    itemContainer.classList.add('orderHistoryCard');
+                    const orderContainer = document.createElement('div');
+                    orderContainer.classList.add('order-container');
 
-                    const date = new Date(orderID);
+                    allOrderIds.map((orderID, index) => {
 
-                    const year = date.getFullYear();
-                    const month = date.getMonth() + 1; // Months are zero-indexed, so we add 1
-                    const day = date.getDate();
-                    const hours = date.getHours();
-                    const minutes = date.getMinutes();
+                        const itemContainer = document.createElement('div');
+                        itemContainer.classList.add('card');
 
-                    const orderNumber = index + 1
+                        const date = new Date(orderID);
 
-                    const orderTitle = document.createElement('h3');
-                    orderTitle.textContent = 'Order ' + orderNumber  + ' from ' + `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
-                    itemContainer.appendChild(orderTitle);
+                        const year = date.getFullYear();
+                        const month = date.getMonth() + 1; // Months are zero-indexed, so we add 1
+                        const day = date.getDate();
+                        const hours = date.getHours();
+                        const minutes = date.getMinutes();
 
-                    let totalPrice = 0
-                    completedOrders.map((item, newIndex) => {
-                        if (item.orderId == orderID) {
-                            const itemElement = document.createElement('p');
-                            itemElement.textContent = `- ${item.title} ${item.price}$`;
-                            itemContainer.appendChild(itemElement); 
-                            totalPrice = totalPrice + item.price
-                        }
+                        const orderNumber = index + 1
+
+                        const orderTitle = document.createElement('h3');
+                        orderTitle.textContent = 'Order ' + orderNumber  + ' from ' + `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+                        itemContainer.appendChild(orderTitle);
+
+                        let totalPrice = 0
+                        completedOrders.map((item, newIndex) => {
+                            if (item.orderId == orderID) {
+                                const itemElement = document.createElement('p');
+                                itemElement.textContent = `- ${item.title} ${item.price}$`;
+                                itemContainer.appendChild(itemElement); 
+                                totalPrice = totalPrice + item.price
+                            }
+                        })
+
+                        const itemElement = document.createElement('p');
+                        itemElement.textContent = `Total ${totalPrice}$`;
+                        itemContainer.appendChild(itemElement); 
+                        orderContainer.appendChild(itemContainer);
+
+                        showOrders.appendChild(orderContainer);
                     })
 
-                    const itemElement = document.createElement('p');
-                    itemElement.textContent = `Total ${totalPrice}$`;
-                    itemContainer.appendChild(itemElement); 
-                    orderContainer.appendChild(itemContainer);
-
-                    showOrders.appendChild(orderContainer);
-                })
-
-                if (completedOrders.length != 0) {
-                    const button = document.createElement('button');
-                    button.textContent = 'Delete Order History';
-                    button.id = 'deleteHistoryButton';
-                    button.style = 'margin-top: 10px;'
-                    showOrders.appendChild(button);
-                } else {
-                    const itemElement = document.createElement('p');
-                    itemElement.textContent = 'No Order History found!';
-                    showOrders.appendChild(itemElement);
-                }
-            </script>
-        </div>
-        
-        
-        
-
-        <div class="recomendationsContainer">
-            <h2>Todays Recomendations</h2>
-            <div id="objectDisplay-Container"></div>
-        </div>
+                    if (completedOrders.length != 0) {
+                        const divElement = document.createElement('div');
+                        divElement.classList.add('text-center')
+                        const button = document.createElement('button');
+                        button.classList.add('button')
+                        button.textContent = 'Delete Order History';
+                        button.id = 'deleteHistoryButton';
+                        button.style = 'margin-top: 10px;'
+                        divElement.appendChild(button);
+                        showOrders.appendChild(divElement);
+                    } else {
+                        const itemElement = document.createElement('p');
+                        itemElement.textContent = 'No Order History found!';
+                        itemElement.classList.add('text-center');
+                        showOrders.appendChild(itemElement);
+                    }
+                </script>
+            </div>
+        </section>
     </main>
     
-    <footer>
+    <footer class="mt-8">
         <div class="container">
             <div class="spacer"></div>
             <p>&copy; 2023 Lunchtracker. All rights reserved.</p>
