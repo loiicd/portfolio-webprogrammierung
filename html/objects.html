@@ -33,26 +33,28 @@
         <h2 class="header-2">Search Objects</h1>
         <a href="./apiSearch.html">Also try our new API-based search</a>
         <p>Here you can browse and search all the Objects</p>
-        <input type="text" class="searchInput" id="search-input" placeholder="Search...">
+        <div class="mb-4">
+            <input type="text" class="searchInput" id="search-input" placeholder="Search...">
 
-        <div id="dropdown1" class="dropdown-check-list" tabindex="100">
-            <span class="anchor">Filter</span>
-            <ul class="items">
-              <li><label><input name="filter-checkbox" type="checkbox" value="vegetarian" />Vegetarian</label></li>
-              <li><label><input name="filter-checkbox" type="checkbox" value="vegan" />Vegan</label></li>
-              <li><label><input name="filter-checkbox" type="checkbox" value="gluten_free" />Gluten free</label></li>
-              <hr />
-              <div id="categoriesFilter"></div>
-            </ul>
-        </div>
+            <div id="dropdown1" class="dropdown-check-list" tabindex="100">
+                <span class="anchor">Filter</span>
+                <ul class="items">
+                <li><label><input name="filter-checkbox" type="checkbox" value="vegetarian" />Vegetarian</label></li>
+                <li><label><input name="filter-checkbox" type="checkbox" value="vegan" />Vegan</label></li>
+                <li><label><input name="filter-checkbox" type="checkbox" value="gluten_free" />Gluten free</label></li>
+                <hr />
+                <div id="categoriesFilter"></div>
+                </ul>
+            </div>
 
-        <div id="dropdown2" class="dropdown-check-list" tabindex="100">
-            <span class="anchor">Sort by</span>
-            <ul class="items">
-              <li><label><input name="sorting-radio" type="radio" value="name" checked/>Name</label></li>
-              <li><label><input name="sorting-radio" type="radio" value="category" />Category</label></li>
-              <li><label><input name="sorting-radio" type="radio" value="price" />Price</label></li>
-            </ul>
+            <div id="dropdown2" class="dropdown-check-list" tabindex="100">
+                <span class="anchor">Sort by</span>
+                <ul class="items">
+                <li><label><input name="sorting-radio" type="radio" value="name" checked/>Name</label></li>
+                <li><label><input name="sorting-radio" type="radio" value="category" />Category</label></li>
+                <li><label><input name="sorting-radio" type="radio" value="price" />Price</label></li>
+                </ul>
+            </div>
         </div>
         <div id="objectDisplay-Container"></div>
     </main>
