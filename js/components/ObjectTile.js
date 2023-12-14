@@ -6,7 +6,7 @@ import { isInLocalStorage, removeFromLocalStorage, addToLocalStorage } from "./u
 
 
 /**
- * @description Class which represents a container of Object Tiles.
+ * @description Class which represents a container of ObjectTiles.
  * @constructor id of html-div to display the container in.
  * @function render() takes a array of Objects which will be displayed.
  */
@@ -33,6 +33,8 @@ class ObjectTile {
   createElement() {
     const objectTile = document.createElement('div');
     objectTile.classList.add('object-tile');
+    objectTile.classList.add('card');
+    objectTile.classList.add('hover');
 
     const tileHeader = document.createElement('div');
     tileHeader.classList.add('tile-header');
