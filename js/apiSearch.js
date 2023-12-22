@@ -6,7 +6,6 @@ import getSelectedFilter from './utils/getSelectedFilter.js';
 //- * * * * * * * * *
 function searchAPI(searchValue, dietFilters) {
     const selectedDietFilters = getSelectedFilter(dietFilters)
-    console.log('Selected Filters', selectedDietFilters)
     const url = `${searchURL}${searchValue}&diet=${selectedDietFilters}&apiKey=${API_KEY}`;
     fetch(url)
     .then(response => response.json())

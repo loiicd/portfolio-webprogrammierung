@@ -5,7 +5,6 @@ import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, cle
 //- * * * * * * * * *
 //- * * Functions * *
 //- * * * * * * * * *
-
 function completeOrder() {
   const orderedItems = getLocalStorage('orders');
 
@@ -27,6 +26,7 @@ function completeOrder() {
   }
 };
 
+
 //- * * * * * * * * * * * * *
 //- * * Base Declarations * *
 //- * * * * * * * * * * * * *
@@ -35,6 +35,10 @@ const placeOrderButton = document.getElementById('placeOrderButton')
 const container = new ObjectContainer('objectDisplay-Container');
 container.render(orders);
 
+
+//- * * * * * * * * * * * *
+//- * * Event Listeners * *
+//- * * * * * * * * * * * *
 window.addEventListener('localStorageUpdated', () => {
   let orders = getLocalStorage('orders');
   container.render(orders);
