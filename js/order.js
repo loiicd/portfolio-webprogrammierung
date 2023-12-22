@@ -12,9 +12,9 @@ function completeOrder() {
   if (orderedItems.length === 0) {
     alert('Ihr Warenkorb ist leer. Bitte fügen Sie Artikel hinzu, bevor Sie eine Bestellung aufgeben.');
     return; // Beendet die Funktion, um zu verhindern, dass eine leere Bestellung abgeschlossen wird
-  }
-  const orderId = Date.now()
+  };
 
+  const orderId = Date.now();
   addToCompletedOrders(orderedItems, orderId);
   clearLocalStorage('orders');
   container.render([]);
@@ -23,9 +23,8 @@ function completeOrder() {
     alert('Ihre Bestellung wurde abgeschlossen.');
   } else {
     alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
-  }
+  };
 };
-
 
 //- * * * * * * * * * * * * *
 //- * * Base Declarations * *
@@ -46,13 +45,4 @@ window.addEventListener('localStorageUpdated', () => {
 
 placeOrderButton.addEventListener('click', () => {
   completeOrder();
-});
-
-
-
-
-
-
-
-
-  
+});  

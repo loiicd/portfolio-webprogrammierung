@@ -28,13 +28,19 @@ export function isInLocalStorage(object, key) {
   return storedObjects.some(favorite => favorite.id === object.id);
 };
 
-
+/**
+ * Checks if an object with a specific order ID exists in the local storage.
+ * @param {Array} objects - The array of objects to check.
+ * @param {string} key - The key to access the local storage.
+ * @param {string} orderId - The order ID to search for.
+ * @returns {boolean} - Returns true if an object with the specified order ID exists in the local storage, otherwise false.
+ * @throws {Error} - Throws an error if the key is not supported in the local storage.
+ */
 export function orderObjectIsInLocalStorage(objects, key, orderId) {
   if (!localStorageKeys.includes(key)) throw new Error('Key not supported!');
   const storedObjects = getLocalStorage(key);
   return objects.some((object) => storedObjects.some((item) => item.id === object.id && item.orderId === orderId));
 };
-
 
 /**
  * @description Adds an object to LocalStorage
@@ -43,7 +49,7 @@ export function orderObjectIsInLocalStorage(objects, key, orderId) {
  */
 export function addToLocalStorage(object, key) {
   if (!localStorageKeys.includes(key)) throw new Error('Key not supported!');
-  const storedObjects = getLocalStorage(key)
+  const storedObjects = getLocalStorage(key);
   storedObjects.push(object);
   localStorage.setItem(key, JSON.stringify(storedObjects));
   window.dispatchEvent(new CustomEvent('localStorageUpdated'));
@@ -83,5 +89,5 @@ export function addToCompletedOrders(orders, orderId) {
  */
 export const clearLocalStorage = (key) => {
   if (!localStorageKeys.includes(key)) throw new Error('Key not supported!');
-  localStorage.setItem(type, JSON.stringify([]));
+  localStorage.setItem(key, JSON.stringify([]));
 };
