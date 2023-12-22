@@ -1,6 +1,6 @@
 import { ObjectContainer } from './components/ObjectTile.js';
 import dineData from './data/objectData.js';
-import { clearOrders } from './components/updateLocalStorage.js';
+import { clearLocalStorage } from './components/updateLocalStorage.js';
 import getRecommendations from './components/getRecomendations.js';
 
 
@@ -16,7 +16,7 @@ const deleteHistoryButton = document.getElementById('deleteHistoryButton')
 //- * * Event Listeners * *
 //- * * * * * * * * * * * *
 deleteHistoryButton.addEventListener('click', () => {
-  clearOrders('completedOrders');
+  clearLocalStorage('completedOrders');
   location.reload();
 });
 window.addEventListener('DOMContentLoaded', () => container.render(recomendedatoins));

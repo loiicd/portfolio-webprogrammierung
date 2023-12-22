@@ -1,5 +1,5 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, clearOrders} from './components/updateLocalStorage.js';
+import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, clearLocalStorage} from './components/updateLocalStorage.js';
 
 
 //- * * * * * * * * *
@@ -16,7 +16,7 @@ function completeOrder() {
   const orderId = Date.now()
 
   addToCompletedOrders(orderedItems, orderId);
-  clearOrders('orders');
+  clearLocalStorage('orders');
   container.render([]);
 
   if (getLocalStorage('orders').length === 0 && orderObjectIsInLocalStorage(orderedItems, 'completedOrders', orderId)) {
