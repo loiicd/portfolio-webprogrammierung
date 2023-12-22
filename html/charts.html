@@ -1,116 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>DineInsight Pro</title>
-        <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-        <link rel="stylesheet" href="../css/style.css">
-        <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
-        <script type='text/javascript' srx="../js/analytics/smartLook.js"></script>
-    </head>
-    <body>
-        <div class="header">
-            <a href="../index.html" class="no-padding"> <img src="../assets/logos/DS_Logo.PNG" alt="DineInsight Logo"></a>
-            <div class="header-right">
-              <a href="../index.html">Home</a>
-                <a href="./objects.html">Objects</a>
-                <a href="./favorites.html">Favorites</a>
-                <a href="./order.html">Order</a>
-                <a class="active" href="./charts.html">Charts</a>
-                <a href="./contact.html">Contact</a>
-            </div>
-          </div>
+  <head>
+    <meta charset="UTF-8">
+    <title>DineInsight Pro</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+    <script type='text/javascript' srx="../js/analytics/smartLook.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <a href="../index.html" class="no-padding"> <img src="../assets/logos/DS_Logo.PNG" alt="DineInsight Logo"></a>
+      <div class="header-right">
+        <a href="../index.html">Home</a>
+          <a href="./objects.html">Objects</a>
+          <a href="./favorites.html">Favorites</a>
+          <a href="./order.html">Order</a>
+          <a class="active" href="./charts.html">Charts</a>
+          <a href="./contact.html">Contact</a>
+      </div>
+    </div>
 
-        <main>
-            <section>
-                <div class="container">
-                    <h2 class="header-2">Charts</h2>
-                </div>
-            </section>
+    <main>
+      <section>
+        <div class="container">
+          <h2 class="header-2">Charts</h2>
+        </div>
+      </section>
 
-            <section>
-                <div>
-                    <div id="chart" style="width:1300px;height:800px;"></div>
-                    <div id="pie-chart" style="width:1300px;height:800px;"></div>
-                </div>
-            </section>
+      <section>
+        <div>
+          <div id="chart" style="width:1300px;height:800px;"></div>
+          <div id="pie-chart" style="width:1300px;height:800px;"></div>
+        </div>
+      </section>
 
-        <script>
-                // Dummy-Daten für Bestellungen der letzten 4 Wochen
-                const dummyData = [
-                { date: '2023-11-01', 'Pizza Salami': 10, 'Pizza Margherita': 15, 'Pizza Funghi': 5, 'Spaghetti Carbonara': 20, 'Lasagne': 8 },
-                { date: '2023-11-08', 'Pizza Salami': 8, 'Pizza Margherita': 12, 'Pizza Funghi': 6, 'Spaghetti Carbonara': 18, 'Lasagne': 7 },
-                { date: '2023-11-15', 'Pizza Salami': 9, 'Pizza Margherita': 14, 'Pizza Funghi': 4, 'Spaghetti Carbonara': 22, 'Lasagne': 9 },
-                { date: '2023-11-22', 'Pizza Salami': 11, 'Pizza Margherita': 16, 'Pizza Funghi': 7, 'Spaghetti Carbonara': 19, 'Lasagne': 6 },
-            ];
-            
-            // Konvertiere das Datum in ein leserliches Format
-            dummyData.forEach(entry => {
-                const date = new Date(entry.date);
-                entry.date = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
-            });
-            
-            // Extrahiere die Gerichte und deren Bestellungen
-            const dishes = Object.keys(dummyData[0]).filter(key => key !== 'date');
-            const orders = {};
-            
-            dishes.forEach(dish => {
-                orders[dish] = dummyData.map(entry => entry[dish]);
-            });
-            
-            // Erstelle den Plot
-            const traceData = dishes.map(dish => ({
-                x: dummyData.map(entry => entry.date),
-                y: orders[dish],
-                mode: 'lines+markers',
-                type: 'scatter',
-                name: dish,
-            }));
-            
-            const layout = {
-                title: 'Bestellungen der letzten 4 Wochen',
-                xaxis: {
-                    title: 'Datum',
-                },
-                yaxis: {
-                    title: 'Anzahl der Bestellungen',
-                },
-            };
-            
-            Plotly.newPlot('chart', traceData, layout);
-            
-
-            // Erstelle den Pie Chart
-            const totalOrders = dummyData.reduce((total, entry) => {
-                return total + Object.values(entry).reduce((sum, value) => sum + (typeof value === 'number' ? value : 0), 0);
-            }, 0);
-            
-            const mostPickedFoods = Object.keys(dummyData[0]).filter(key => key !== 'date').map(dish => ({
-                label: dish,
-                value: orders[dish].reduce((sum, value) => sum + value, 0),
-            }));
-            
-            const pieData = [{
-                values: mostPickedFoods.map(food => (food.value / totalOrders) * 100),
-                labels: mostPickedFoods.map(food => food.label),
-                type: 'pie',
-            }];
-            
-            const pieLayout = {
-                title: 'Anteil der meistbestellten Gerichte',
-            };
-            
-            Plotly.newPlot('pie-chart', pieData, pieLayout);
-        </script>
+      <script>
+        // Dummy-Daten für Bestellungen der letzten 4 Wochen
+        const dummyData = [
+          { date: '2023-11-01', 'Pizza Salami': 10, 'Pizza Margherita': 15, 'Pizza Funghi': 5, 'Spaghetti Carbonara': 20, 'Lasagne': 8 },
+          { date: '2023-11-08', 'Pizza Salami': 8, 'Pizza Margherita': 12, 'Pizza Funghi': 6, 'Spaghetti Carbonara': 18, 'Lasagne': 7 },
+          { date: '2023-11-15', 'Pizza Salami': 9, 'Pizza Margherita': 14, 'Pizza Funghi': 4, 'Spaghetti Carbonara': 22, 'Lasagne': 9 },
+          { date: '2023-11-22', 'Pizza Salami': 11, 'Pizza Margherita': 16, 'Pizza Funghi': 7, 'Spaghetti Carbonara': 19, 'Lasagne': 6 },
+        ];
+          
+        // Konvertiere das Datum in ein leserliches Format
+        dummyData.forEach(entry => {
+          const date = new Date(entry.date);
+          entry.date = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+        });
         
+        // Extrahiere die Gerichte und deren Bestellungen
+        const dishes = Object.keys(dummyData[0]).filter(key => key !== 'date');
+        const orders = {};
+          
+        dishes.forEach(dish => {
+          orders[dish] = dummyData.map(entry => entry[dish]);
+        });
+          
+        // Erstelle den Plot
+        const traceData = dishes.map(dish => ({
+          x: dummyData.map(entry => entry.date),
+          y: orders[dish],
+          mode: 'lines+markers',
+          type: 'scatter',
+          name: dish,
+        }));
+          
+        const layout = {
+          title: 'Bestellungen der letzten 4 Wochen',
+          xaxis: {
+              title: 'Datum',
+          },
+          yaxis: {
+              title: 'Anzahl der Bestellungen',
+          },
+        };
+          
+        Plotly.newPlot('chart', traceData, layout);  
+
+        // Erstelle den Pie Chart
+        const totalOrders = dummyData.reduce((total, entry) => {
+          return total + Object.values(entry).reduce((sum, value) => sum + (typeof value === 'number' ? value : 0), 0);
+        }, 0);
+          
+        const mostPickedFoods = Object.keys(dummyData[0]).filter(key => key !== 'date').map(dish => ({
+          label: dish,
+          value: orders[dish].reduce((sum, value) => sum + value, 0),
+        }));
+          
+        const pieData = [{
+          values: mostPickedFoods.map(food => (food.value / totalOrders) * 100),
+          labels: mostPickedFoods.map(food => food.label),
+          type: 'pie',
+        }];
+          
+        const pieLayout = {
+          title: 'Anteil der meistbestellten Gerichte',
+        };
+          
+        Plotly.newPlot('pie-chart', pieData, pieLayout);
+      </script>
     </main>
     
     <footer>
-        <div class="container">
-            <div class="spacer"></div>
-            <p>&copy; 2023 Lunchtracker. All rights reserved.</p>
-            <p><a href="https://github.com/loiicd/portfolio-webprogrammierung" target="_blank">View in the Github</a></p>
-            <p><a href="./impressum.html">Impressum</a></p>
-        </div>
+      <div class="container">
+        <div class="spacer"></div>
+        <p>&copy; 2023 Lunchtracker. All rights reserved.</p>
+        <p><a href="https://github.com/loiicd/portfolio-webprogrammierung" target="_blank">View in the Github</a></p>
+        <p><a href="./impressum.html">Impressum</a></p>
+      </div>
     </footer>
-</body>
+  </body>
+</html>

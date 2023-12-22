@@ -5,36 +5,35 @@ import getSelectedFilter from './components/getSelectedFilter.js';
 //- * * Functions * *
 //- * * * * * * * * *
 function searchAPI(searchValue, dietFilters) {
-    const selectedDietFilters = getSelectedFilter(dietFilters)
+    const selectedDietFilters = getSelectedFilter(dietFilters);
     const url = `${searchURL}${searchValue}&diet=${selectedDietFilters}&apiKey=${API_KEY}`;
     fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const results = data.results;
-        console.log(results);
-        let promises = results.map(async result => {
-            const response = await fetch(`https://api.spoonacular.com/recipes/${result.id}/summary?apiKey=${API_KEY}`);
-            const summaryData = await response.json();
-            return {
-                title: result.title,
-                image: result.image,
-                description: summaryData.summary
-            };
-        });
+        .then(response => response.json())
+        .then(data => {
+            const results = data.results;
+            let promises = results.map(async result => {
+                const response = await fetch(`https://api.spoonacular.com/recipes/${result.id}/summary?apiKey=${API_KEY}`);
+                const summaryData = await response.json();
+                return {
+                    title: result.title,
+                    image: result.image,
+                    description: summaryData.summary
+                };
+            });
 
-        Promise.all(promises)
-        .then(objectContainers => {
-            const container = new ObjectContainer('objectDisplay-Container');
-            container.render(objectContainers);
+            Promise.all(promises)
+            .then(objectContainers => {
+                const container = new ObjectContainer('objectDisplay-Container');
+                container.render(objectContainers);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    })
     .catch(error => {
         console.error('Error:', error);
     });
-}
+};
 
 
 //- * * * * * * * * * * * * *

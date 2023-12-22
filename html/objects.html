@@ -1,89 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/dropwdown.css">
+    <link rel="stylesheet" href="../css/dropdown.css">
     <title>Search Objects</title>
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <script type="module" src="../js/objects.js"></script>
     <script type='text/javascript' srx="../js/analytics/smartLook.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <a href="../index.html" class="no-padding"> <img src="../assets/logos/DS_Logo.PNG" alt="DineInsight Logo"></a>
-        <div class="header-right">
-          <a href="../index.html">Home</a>
-            <a class="active" href="./objects.html">Objects</a>
-            <a href="./favorites.html">Favorites</a>
-            <a href="./order.html">Order</a>
-            <a href="./charts.html">Charts</a>
-            <a href="./contact.html">Contact</a>
-        </div>
+      <a href="../index.html" class="no-padding"> <img src="../assets/logos/DS_Logo.PNG" alt="DineInsight Logo"></a>
+      <div class="header-right">
+        <a href="../index.html">Home</a>
+        <a class="active" href="./objects.html">Objects</a>
+        <a href="./favorites.html">Favorites</a>
+        <a href="./order.html">Order</a>
+        <a href="./charts.html">Charts</a>
+        <a href="./contact.html">Contact</a>
       </div>
+    </div>
    
     <main class="container">
-        <h2 class="header-2">Search Objects</h1>
-        <a href="./apiSearch.html">Also try our new API-based search</a>
-        <p>Here you can browse and search all the Objects</p>
-        <div class="mb-4">
-            <input type="text" class="searchInput" id="search-input" placeholder="Search...">
+      <h2 class="header-2">Search Objects</h1>
+      <a href="./apiSearch.html">Also try our new API-based search</a>
+      <p>Here you can browse and search all the Objects</p>
+      <div class="mb-4">
+        <input type="text" class="searchInput" id="search-input" placeholder="Search...">
 
-            <div id="dropdown1" class="dropdown-check-list" tabindex="100">
-                <span class="anchor">Filter</span>
-                <ul class="items">
-                <li><label><input name="filter-checkbox" type="checkbox" value="vegetarian" />Vegetarian</label></li>
-                <li><label><input name="filter-checkbox" type="checkbox" value="vegan" />Vegan</label></li>
-                <li><label><input name="filter-checkbox" type="checkbox" value="gluten_free" />Gluten free</label></li>
-                <hr />
-                <div id="categoriesFilter"></div>
-                </ul>
-            </div>
+        <div id="dropdown1" class="dropdown-check-list" tabindex="100">
+          <span class="anchor">Filter</span>
+          <ul class="items">
+            <li><label><input name="filter-checkbox" type="checkbox" value="vegetarian" />Vegetarian</label></li>
+            <li><label><input name="filter-checkbox" type="checkbox" value="vegan" />Vegan</label></li>
+            <li><label><input name="filter-checkbox" type="checkbox" value="gluten_free" />Gluten free</label></li>
+            <hr />
+            <div id="categoriesFilter"></div>
+          </ul>
+        </div>
 
-            <div id="dropdown2" class="dropdown-check-list" tabindex="100">
-                <span class="anchor">Sort by</span>
-                <ul class="items">
-                <li><label><input name="sorting-radio" type="radio" value="name" checked/>Name</label></li>
-                <li><label><input name="sorting-radio" type="radio" value="category" />Category</label></li>
-                <li><label><input name="sorting-radio" type="radio" value="price" />Price</label></li>
-                </ul>
-            </div>
+        <div id="dropdown2" class="dropdown-check-list" tabindex="100">
+          <span class="anchor">Sort by</span>
+          <ul class="items">
+            <li><label><input name="sorting-radio" type="radio" value="name" checked/>Name</label></li>
+            <li><label><input name="sorting-radio" type="radio" value="category" />Category</label></li>
+            <li><label><input name="sorting-radio" type="radio" value="price" />Price</label></li>
+          </ul>
         </div>
-            
-        </div>
-        
-        <div id="objectDisplay-Container"></div>
+
+      </div>        
+      <div id="objectDisplay-Container"></div>
     </main>
     
     <footer class="mt-8">
-        <div class="container">
-            <div class="spacer"></div>
-            <p>&copy; 2023 Lunchtracker. All rights reserved.</p>
-            <p><a href="https://github.com/loiicd/portfolio-webprogrammierung" target="_blank">View in the Github</a></p>
-            <p><a href="./impressum.html">Impressum</a></p>
-        </div>
+      <div class="container">
+        <div class="spacer"></div>
+        <p>&copy; 2023 Lunchtracker. All rights reserved.</p>
+        <p><a href="https://github.com/loiicd/portfolio-webprogrammierung" target="_blank">View in the Github</a></p>
+        <p><a href="./impressum.html">Impressum</a></p>
+      </div>
     </footer>
 
     <script>
-        var checkList1 = document.getElementById('dropdown1');
-        checkList1.getElementsByClassName('anchor')[0].onclick = function(evt) {
-            if (checkList1.classList.contains('visible')) {
-                checkList1.classList.remove('visible');
-            } else {
-                checkList1.classList.add('visible');
-            }
-        }
+      var checkList1 = document.getElementById('dropdown1');
+      checkList1.getElementsByClassName('anchor')[0].onclick = function(evt) {
+        if (checkList1.classList.contains('visible')) {
+          checkList1.classList.remove('visible');
+        } else {
+          checkList1.classList.add('visible');
+        };
+      };
 
-        var checkList2 = document.getElementById('dropdown2');
-        checkList2.getElementsByClassName('anchor')[0].onclick = function(evt) {
-            if (checkList2.classList.contains('visible')) {
-                checkList2.classList.remove('visible');
-            } else {
-                checkList2.classList.add('visible');
-            }
-        }
+      var checkList2 = document.getElementById('dropdown2');
+      checkList2.getElementsByClassName('anchor')[0].onclick = function(evt) {
+        if (checkList2.classList.contains('visible')) {
+          checkList2.classList.remove('visible');
+        } else {
+          checkList2.classList.add('visible');
+        };
+      };
     </script>   
-</body>
-
+  </body>
 </html>
 

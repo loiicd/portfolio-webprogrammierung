@@ -30,7 +30,7 @@ function completeOrder() {
 //- * * Base Declarations * *
 //- * * * * * * * * * * * * *
 let orders = getLocalStorage('orders');
-const placeOrderButton = document.getElementById('placeOrderButton')
+const placeOrderButton = document.getElementById('placeOrderButton');
 const container = new ObjectContainer('objectDisplay-Container');
 container.render(orders);
 

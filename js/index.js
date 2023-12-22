@@ -7,16 +7,18 @@ import getRecommendations from './components/getRecomendations.js';
 //- * * * * * * * * * * * * *
 //- * * Base Declarations * *
 //- * * * * * * * * * * * * *
-const recomendedatoins = getRecommendations(dineData)
+const recomendedatoins = getRecommendations(dineData);
 const container = new ObjectContainer('objectDisplay-Container');
-const deleteHistoryButton = document.getElementById('deleteHistoryButton')
+const deleteHistoryButton = document.getElementById('deleteHistoryButton');
 
 
 //- * * * * * * * * * * * *
 //- * * Event Listeners * *
 //- * * * * * * * * * * * *
-deleteHistoryButton.addEventListener('click', () => {
-  clearLocalStorage('completedOrders');
-  location.reload();
-});
+if (deleteHistoryButton) {
+  deleteHistoryButton.addEventListener('click', () => {
+    clearLocalStorage('completedOrders');
+    location.reload();
+  });
+};
 window.addEventListener('DOMContentLoaded', () => container.render(recomendedatoins));

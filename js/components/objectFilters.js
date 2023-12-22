@@ -5,19 +5,16 @@
  * @return {array} - array of objects that match the search
  */
 export const filterBySearchText = (searchText, objects) => {
-  return objects.filter(object => {
-    return object.title.toLowerCase().includes(searchText.toLowerCase());
-  });
+  return objects.filter(object => object.title.toLowerCase().includes(searchText.toLowerCase()));
 };
 
 /**
  * Filter objects by multiple attributes
  * @param {string[]} searchFilter - list of attributes
  * @param {array} objects - array of objects to search
- * @param {string[]} allCategories - array of all categories 
  * @return {array} - array of objects that match the attributes
  */
-export const filterByAttributes = (searchFilter, objects, allCategories) => {
+export const filterByAttributes = (searchFilter, objects) => {
   if (searchFilter.length === 0) return objects;
   const dietFilters = getDietFilters(searchFilter);
   const categoriesFilter = getCategoriesFilter(searchFilter);
