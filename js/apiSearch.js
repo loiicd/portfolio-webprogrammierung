@@ -1,5 +1,5 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import getSelectedFilter from './utils/getSelectedFilter.js';
+import getSelectedFilter from './components/getSelectedFilter.js';
 
 //- * * * * * * * * *
 //- * * Functions * *

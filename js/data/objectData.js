@@ -3,7 +3,7 @@
  * It contains the objects array with its attributes: id, title, category, description, image, and diet{vegetarian, gluten_free, vegan}
  */
 
-export const dineData = [
+const dineData = [
     { id: 1001, title: "Pizza Salami", description: "Eine köstliche Pizza mit Salami und Käse.", category: "Pizza", image: "../../assets/compressed/Pizza_Salami.png", diet: { vegetarian: false, gluten_free: false, vegan: false }, price: 12.99 },
     { id: 1002, title: "Pizza Margherita", description: "Eine klassische Pizza mit Tomaten, Mozzarella und Basilikum.", category: "Pizza", image: "../../assets/compressed/Pizza_Margherita.png", diet: { vegetarian: true, gluten_free: false, vegan: false }, price: 10.99 },
     { id: 1003, title: "Pizza Funghi", description: "Pizza mit Pilzen, Olivenöl und frischem Knoblauch.", category: "Pizza", image: "../../assets/compressed/Pizza_Funghi.jpg", diet: { vegetarian: false, gluten_free: false, vegan: false }, price: 11.99 },
@@ -38,3 +38,5 @@ export const dineData = [
     { id: 1039, title: "Shrimp Tacos", description: "Tacos filled with seasoned shrimp, cabbage slaw, and avocado crema.", category: "Mexican", image: "../../assets/compressed/Shrimp_Taco.png", diet: { vegetarian: false, gluten_free: false, vegan: false }, price: 16.99 },
     { id: 1040, title: "Mushroom and Swiss Burger", description: "Juicy burger with sautéed mushrooms, Swiss cheese, and truffle aioli.", category: "Burger", image: "../../assets/compressed/Mushroom_and_Swiss_Burger.png", diet: { vegetarian: false, gluten_free: false, vegan: false }, price: 14.99 },
 ];
+
+export default dineData;

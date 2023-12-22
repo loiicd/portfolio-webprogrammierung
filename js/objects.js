@@ -1,7 +1,7 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import { dineData } from './components/objectData.js';
+import dineData from './data/objectData.js';
 import { filterBySearchText, filterByAttributes } from './components/objectFilters.js';
-import getSelectedFilter from './utils/getSelectedFilter.js';
+import getSelectedFilter from './components/getSelectedFilter.js';
 
 
 //- * * * * * * * * *
