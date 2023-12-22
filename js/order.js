@@ -16,7 +16,7 @@ function completeOrder() {
   const orderId = Date.now()
 
   addToCompletedOrders(orderedItems, orderId);
-  clearOrders();
+  clearOrders('orders');
   container.render([]);
 
   if (getLocalStorage('orders').length === 0 && orderObjectIsInLocalStorage(orderedItems, 'completedOrders', orderId)) {

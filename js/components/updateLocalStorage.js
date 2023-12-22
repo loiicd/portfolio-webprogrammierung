@@ -70,18 +70,14 @@ export function removeFromLocalStorage(object, key) {
  */
 export function addToCompletedOrders(orders, orderId) {
   const completedOrders = getLocalStorage('completedOrders');
-  // Füge alle neuen Bestellungen zu den abgeschlossenen Bestellungen hinzu
-
   orders.map((order) => order.orderId = orderId)
   completedOrders.push(...orders);
-
   localStorage.setItem('completedOrders', JSON.stringify(completedOrders));
 }
 
-
-export function clearOrders() {
-  // Fügen Sie hier Code hinzu, um "orders" zu leeren
-  localStorage.setItem('orders', JSON.stringify([]));
-}
-
-export const clearCompletedOrders = () => localStorage.setItem('completedOrders', JSON.stringify([]));
+/**
+ * Löscht Orders aus dem Local Storage
+ * @param {string} type - 'orders' oder 'completedOrders'
+ * @return {void}
+ */
+export const clearOrders = (type) => localStorage.setItem(type, JSON.stringify([]));
