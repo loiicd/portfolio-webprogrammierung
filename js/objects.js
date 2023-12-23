@@ -1,7 +1,7 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import { dineData } from './components/objectData.js';
+import dineData from './data/objectData.js';
 import { filterBySearchText, filterByAttributes } from './components/objectFilters.js';
-import getSelectedFilter from './utils/getSelectedFilter.js';
+import getSelectedFilter from './components/getSelectedFilter.js';
 
 
 //- * * * * * * * * *
@@ -11,25 +11,24 @@ const renderRawDineData = () => {
   const sortingType = getCheckedRadioValue(sortingRadio);
   const sortedDineData = sortDineData(dineData, sortingType);
   container.render(sortedDineData);
-}
+};
 
 const renderFilterCategories = () => {
   const allCategories = [...new Set(dineData.map(item => item.category))];
   allCategories.forEach((category) => createListItem(categoryFilterDiv, category));
-}
+};
 
 const renderReducedDineData = () => {
-  const allCategories = [...new Set(dineData.map(item => item.category))];
   const searchText = searchInput.value;
   const searchFilter = searchFilterCheckboxes;
   const selectedSearchFilter = getSelectedFilter(searchFilter);
   const searchResults = filterBySearchText(searchText, dineData);
-  const filterResults = filterByAttributes(selectedSearchFilter, dineData, allCategories);
+  const filterResults = filterByAttributes(selectedSearchFilter, dineData);
   const overlappingResults = searchResults.filter(result => filterResults.includes(result));
   const sortingType = getCheckedRadioValue(sortingRadio);
   const sortedDineData = sortDineData(overlappingResults, sortingType);
   container.render(sortedDineData);
-}
+};
 
 const createListItem = (categoryFilterDiv, category) => {
   const listItem = document.createElement('li');
@@ -44,7 +43,7 @@ const createListItem = (categoryFilterDiv, category) => {
   label.appendChild(checkbox);
   label.appendChild(span);
   categoryFilterDiv.appendChild(listItem);
-}
+};
 
 const getCheckedRadioValue = (sortingRadio) => {
   let checkedValue;
@@ -52,10 +51,10 @@ const getCheckedRadioValue = (sortingRadio) => {
     if (radio.checked) {
       checkedValue = radio.value;
       break;
-    }
-  }
+    };
+  };
   return checkedValue;
-}
+};
 
 const sortDineData = (dineData, type) => {
   switch (type) {
@@ -65,8 +64,8 @@ const sortDineData = (dineData, type) => {
       return dineData.sort((a, b) => a.category.localeCompare(b.category));
     case 'price':
       return dineData.sort((a, b) => a.price -b.price);
-  }
-}
+  };
+};
 
 //- * * * * * * * * * * * * *
 //- * * Base Declarations * *
@@ -87,8 +86,8 @@ window.addEventListener('DOMContentLoaded', () => {
   searchInput.addEventListener('input', renderReducedDineData);
   for (var i = 0, len = searchFilterCheckboxes.length; i < len; i++) {
     searchFilterCheckboxes[i].addEventListener('change', renderReducedDineData);
-  }
+  };
   for (var i = 0, len = sortingRadio.length; i < len; i++) {
     sortingRadio[i].addEventListener('change', renderRawDineData);
-  }
-})
+  };
+});

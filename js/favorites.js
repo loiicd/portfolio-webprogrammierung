@@ -1,10 +1,18 @@
 import { ObjectContainer } from './components/ObjectTile.js';
 
+
+//- * * * * * * * * * * * * *
+//- * * Base Declarations * *
+//- * * * * * * * * * * * * *
+const container = new ObjectContainer('objectDisplay-Container');
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-const container = new ObjectContainer('objectDisplay-Container');
-container.render(favorites);
 
+//- * * * * * * * * * * * *
+//- * * Event Listeners * *
+//- * * * * * * * * * * * *
 window.addEventListener('favoritesUpdated', () => {
   let favorites = JSON.parse(localStorage.getItem('favorites'))  || [];
-  container.render(favorites);}); 
+  container.render(favorites);
+}); 
+window.addEventListener('DOMContentLoaded', () => container.render(favorites));

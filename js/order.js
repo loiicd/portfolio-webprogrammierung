@@ -1,11 +1,10 @@
 import { ObjectContainer } from './components/ObjectTile.js';
-import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, clearOrders} from './components/updateLocalStorage.js';
+import { getLocalStorage, orderObjectIsInLocalStorage, addToCompletedOrders, clearLocalStorage} from './components/updateLocalStorage.js';
 
 
 //- * * * * * * * * *
 //- * * Functions * *
 //- * * * * * * * * *
-
 function completeOrder() {
   const orderedItems = getLocalStorage('orders');
 
@@ -13,28 +12,32 @@ function completeOrder() {
   if (orderedItems.length === 0) {
     alert('Ihr Warenkorb ist leer. Bitte fügen Sie Artikel hinzu, bevor Sie eine Bestellung aufgeben.');
     return; // Beendet die Funktion, um zu verhindern, dass eine leere Bestellung abgeschlossen wird
-  }
-  const orderId = Date.now()
+  };
 
+  const orderId = Date.now();
   addToCompletedOrders(orderedItems, orderId);
-  clearOrders();
+  clearLocalStorage('orders');
   container.render([]);
 
   if (getLocalStorage('orders').length === 0 && orderObjectIsInLocalStorage(orderedItems, 'completedOrders', orderId)) {
     alert('Ihre Bestellung wurde abgeschlossen.');
   } else {
     alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
-  }
+  };
 };
 
 //- * * * * * * * * * * * * *
 //- * * Base Declarations * *
 //- * * * * * * * * * * * * *
 let orders = getLocalStorage('orders');
-const placeOrderButton = document.getElementById('placeOrderButton')
+const placeOrderButton = document.getElementById('placeOrderButton');
 const container = new ObjectContainer('objectDisplay-Container');
 container.render(orders);
 
+
+//- * * * * * * * * * * * *
+//- * * Event Listeners * *
+//- * * * * * * * * * * * *
 window.addEventListener('localStorageUpdated', () => {
   let orders = getLocalStorage('orders');
   container.render(orders);
@@ -42,13 +45,4 @@ window.addEventListener('localStorageUpdated', () => {
 
 placeOrderButton.addEventListener('click', () => {
   completeOrder();
-});
-
-
-
-
-
-
-
-
-  
+});  
